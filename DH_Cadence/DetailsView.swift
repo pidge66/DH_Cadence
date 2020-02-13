@@ -12,13 +12,12 @@ import UIKit
 struct DetailsView: View {
     
     @Binding var cadence: Cadence
-    @State private var text = ""
 
     var body: some View {
         VStack {
             HStack {
                 Text("Name:").bold()
-                TextField("Enter Cadence Name", text: $cadence.name)
+                TextField("Enter Cadence Name", text: $cadence.name)		
                     .background(Color(UIColor.lightGray))
             }.padding(.top, 40)
 //            HStack {
@@ -31,6 +30,14 @@ struct DetailsView: View {
                     Text("\(cadence.repetitions) times")
                 }
             }
+//            Divider()
+//            List {
+//                ForEach ((0..<self.cadence.metronomes.count)) { i in
+//                    NavigationLink(destination: DetailsView(cadence: $self.cadences[i])) {
+//                        Text("\(self.cadence.metronomes[i].tag)")
+//                    }
+//                }
+//            }
 
             Spacer()
             HStack {

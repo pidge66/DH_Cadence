@@ -9,14 +9,18 @@
 import Foundation
 
 struct Metronome: Identifiable {
-    let id = UUID()
+    public var id = UUID()
     var tone: String
     var tempo: Int8
     var repetitions: Int8
 }
 
-struct Cadence: Identifiable {
-    let id = UUID()
+struct Cadence: Identifiable, Equatable{
+    static func == (lhs: Cadence, rhs: Cadence) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    public var id = UUID()
     var name: String
     var repetitions: Int
     var metronomes: [Metronome]
