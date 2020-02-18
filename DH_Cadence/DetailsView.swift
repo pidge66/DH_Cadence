@@ -6,7 +6,9 @@
 //  Copyright © 2020 David Hou. All rights reserved.
 //
 
+import Foundation
 import SwiftUI
+import Combine
 import UIKit
 
 struct DetailsView: View {

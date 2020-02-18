@@ -6,33 +6,30 @@
 //  Copyright © 2020 David Hou. All rights reserved.
 //
 
+import Foundation
 import SwiftUI
+import Combine
 
 
 struct ContentView: View {
-    
-    @State private var cadences: [Cadence] = [
-        Cadence(name: "Cadence 1", repetitions: 10, metronomes: []),
-//            Metronome(tone: "Tone 1", tempo: 60, repetitions: 4),
-//            Metronome(tone: "Tone 2", tempo: 60, repetitions: 7),
-//            Metronome(tone: "Tone 3", tempo: 60, repetitions: 8),
-//        ]),
-        Cadence(name: "Cadence 2", repetitions: 10, metronomes: [])
-    ]
+//    @State var cadences: [Cadence] = [Cadence(name: "Cadence 1", repetitions: 10, metronomes: []),
+//                          Cadence(name: "Cadence 2", repetitions: 10, metronomes: [])]
+//    @ObservedObject var cadences: [Cadence] = [
+//        Cadence(name: "Cadence 2", repetitions: 10, metronomes: [])
+//    ]
         
 //    private lazy var count = cadences.count
+    @ObservedObject var myCadences :ArrayCadences = ArrayCadences()
+    @State var myStateText = ""
     
     var body: some View {
-        if let i = cadences.firstIndex(of: cadences[1]) {
-            print("\(i)")
-        }
 
         return NavigationView {
             VStack {
                 Button(action: {
-                    self.cadences.append(
-                        Cadence(name: "Cadence n", repetitions: 10, metronomes: []))
-                    print(self.cadences.count)
+                    self.myCadences.cadences.append(
+                        Cadence(name: "<New Cadence>", repetitions: 10, metronomes: []))
+                    print(self.myCadences.cadences.count)
                 }, label: {
                     HStack {
                         Spacer()
@@ -41,53 +38,22 @@ struct ContentView: View {
                         
                     }
                 })
+                
                 Divider()
-//                List {
-//                    ForEach ((0..<self.cadences.count)) { i in
-//                        NavigationLink(destination: DetailsView(cadence: self.$cadences[i])) {
-//                            Text("\(self.cadences[i].name)")
-//                        }
-//                    }
-//                }
-
+                
                 List {
-                    //ForEach (self.cadences.indices, id: \.self) { i in
-                    ForEach (Array(self.cadences.enumerated()), id: \.element.id) { (i, st) in
-                        NavigationLink(destination: DetailsView(cadence: self.$cadences[i])) {
-                            Text("\(self.cadences[i].name)")
-                            Text("\(st.name)")
+                    //ForEach (Array(self.myCadences.cadences.enumerated()), id: \.element.id) { (i, cadence) in
+                    ForEach (self.myCadences.cadences.indices, id: \.self) { i in
+                        // *** Can't pass cadence as binding!  so need index and thus requires id
+                        // *** Also, the array itself must be Observable, not just its elements
+                        NavigationLink(destination: DetailsView(cadence: self.$myCadences.cadences[i])) {
+                            //Text("\(cadence.name)")
+                            Text("\(self.myCadences.cadences[i].name)")
                         }
+                        
                     }
                 }
                 
-//                List {
-//                    NavigationLink(destination: DetailsView(cadence: self.$cadences[0])) {
-//                        Text("\(cadences[0].name)")
-//                    }
-//
-//                    if self.cadences.count > 2 {
-//                        NavigationLink(destination: DetailsView(cadence: self.$cadences[2])) {
-//                            Text("\(cadences[2].name)")
-//                        }
-//                    }
-//                }
-//                List {
-//                    ForEach (cadences, id: \.id) { cadence in
-//                        //Text("\(cadence.name)")
-//                        NavigationLink(destination:
-//                            DetailsView(cadence: self.$cadences[self.cadences.firstIndex(of: cadence)!])) {
-//                            Text("\(cadence.name)")
-//                        }
-//                    }
-//                }
-//                List {
-//                    ForEach (cadences, id: \.id) { cadence in
-//                        //Text("\(cadence.name)")
-//                        NavigationLink(destination: DetailsView(cadence: $cadence)) {
-//                            Text("\(cadence.name)")
-//                        }
-//                    }
-//                }
             }.navigationBarTitle(Text("CADENCES"))
             .padding(.leading, 20)
             .padding(.trailing, 20)
