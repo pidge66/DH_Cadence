@@ -20,7 +20,7 @@ struct DetailsView: View {
             HStack {
                 Text("Name:").bold()
                 TextField("Enter Cadence Name", text: $cadence.name)		
-                    .background(Color(UIColor.lightGray))
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
             }.padding(.top, 40)
 //            HStack {
 //                Text("Tempo:").bold()

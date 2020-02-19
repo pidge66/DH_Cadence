@@ -10,7 +10,6 @@ import Foundation
 import SwiftUI
 import Combine
 
-
 struct ContentView: View {
 //    @State var cadences: [Cadence] = [Cadence(name: "Cadence 1", repetitions: 10, metronomes: []),
 //                          Cadence(name: "Cadence 2", repetitions: 10, metronomes: [])]
@@ -25,43 +24,28 @@ struct ContentView: View {
     var body: some View {
 
         return NavigationView {
-            VStack {
-                Button(action: {
-                    self.myCadences.cadences.append(
-                        Cadence(name: "<New Cadence>", repetitions: 10, metronomes: []))
-                    print(self.myCadences.cadences.count)
-                }, label: {
-                    HStack {
-                        Spacer()
-                        Image(systemName: "plus")
-                            .font(.system(size: 26))
-                        
+            List {
+                //ForEach (Array(self.myCadences.cadences.enumerated()), id: \.element.id) { (i, cadence) in
+                ForEach (self.myCadences.cadences.indices, id: \.self) { i in
+                    // *** Can't pass cadence as binding!  so need index and thus requires id
+                    // *** Also, the array itself must be Observable, not just its elements
+                    NavigationLink(destination: DetailsView(cadence: self.$myCadences.cadences[i])) {
+                        //Text("\(cadence.name)")
+                        Text("\(self.myCadences.cadences[i].name)")
                     }
-                })
-                
-                Divider()
-                
-                List {
-                    //ForEach (Array(self.myCadences.cadences.enumerated()), id: \.element.id) { (i, cadence) in
-                    ForEach (self.myCadences.cadences.indices, id: \.self) { i in
-                        // *** Can't pass cadence as binding!  so need index and thus requires id
-                        // *** Also, the array itself must be Observable, not just its elements
-                        NavigationLink(destination: DetailsView(cadence: self.$myCadences.cadences[i])) {
-                            //Text("\(cadence.name)")
-                            Text("\(self.myCadences.cadences[i].name)")
-                        }
-                        
-                    }
+                    
                 }
-                
-            }.navigationBarTitle(Text("CADENCES"))
+            }
+            .navigationBarTitle(Text("CADENCES"))
             .padding(.leading, 20)
             .padding(.trailing, 20)
             .navigationBarItems(trailing: Button(action: {
-                
+                self.myCadences.cadences.append(
+                    Cadence(name: "<New Cadence>", repetitions: 10, metronomes: []))
+                print(self.myCadences.cadences.count)
             }, label: {
                 Image(systemName: "plus.circle.fill")
-                .font(.system(size: 36))
+                    .font(.system(size: 36))
             }))
         }
     }
