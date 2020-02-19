@@ -14,6 +14,7 @@ import UIKit
 struct DetailsView: View {
     
     @Binding var cadence: Cadence
+    let player = Player()
 
     var body: some View {
         VStack {
@@ -43,14 +44,19 @@ struct DetailsView: View {
 
             Spacer()
             HStack {
-                Button(action: {}, label: {
+                Button(action: {
+                    self.player.playSound()
+                }, label: {
                     Text("Run").font(.system(size: 24))
 
                 })
 
-            }
+            }.padding(.bottom, 40)
         }.navigationBarTitle(Text("\(cadence.name)"))
         .padding(.leading, 20).padding(.trailing, 20)
+            .onDisappear {
+                self.player.stopSound()
+        }
     }
 }
 

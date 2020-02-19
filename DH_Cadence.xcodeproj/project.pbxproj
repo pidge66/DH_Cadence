@@ -16,6 +16,9 @@
 		4E54C66A23EE23EF000E450E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E54C66923EE23EF000E450E /* Assets.xcassets */; };
 		4E54C66D23EE23EF000E450E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E54C66C23EE23EF000E450E /* Preview Assets.xcassets */; };
 		4E54C67023EE23EF000E450E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E54C66E23EE23EF000E450E /* LaunchScreen.storyboard */; };
+		4ECBB59E23FD8DC4003A2986 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECBB59D23FD8DC4003A2986 /* Player.swift */; };
+		4ECBB5A023FD92A8003A2986 /* PinkPanther30.wav in Resources */ = {isa = PBXBuildFile; fileRef = 4ECBB59F23FD92A7003A2986 /* PinkPanther30.wav */; };
+		4ECBB5A223FDB19A003A2986 /* BachGavotteShort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4ECBB5A123FDB19A003A2986 /* BachGavotteShort.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		4E54C66C23EE23EF000E450E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4E54C66F23EE23EF000E450E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E54C67123EE23EF000E450E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4ECBB59D23FD8DC4003A2986 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		4ECBB59F23FD92A7003A2986 /* PinkPanther30.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = PinkPanther30.wav; sourceTree = "<group>"; };
+		4ECBB5A123FDB19A003A2986 /* BachGavotteShort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BachGavotteShort.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,8 +80,11 @@
 				4E54C66023EE23EE000E450E /* AppDelegate.swift */,
 				4E54C66223EE23EE000E450E /* SceneDelegate.swift */,
 				4E1346E523F18FAC00B629B3 /* DetailsView.swift */,
+				4ECBB59D23FD8DC4003A2986 /* Player.swift */,
 				4E54C66723EE23EE000E450E /* ContentView.swift */,
 				4E54C66923EE23EF000E450E /* Assets.xcassets */,
+				4ECBB59F23FD92A7003A2986 /* PinkPanther30.wav */,
+				4ECBB5A123FDB19A003A2986 /* BachGavotteShort.mp3 */,
 				4E54C66E23EE23EF000E450E /* LaunchScreen.storyboard */,
 				4E54C67123EE23EF000E450E /* Info.plist */,
 				4E54C66423EE23EE000E450E /* DH_Cadence.xcdatamodeld */,
@@ -150,8 +159,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ECBB5A023FD92A8003A2986 /* PinkPanther30.wav in Resources */,
 				4E54C67023EE23EF000E450E /* LaunchScreen.storyboard in Resources */,
 				4E54C66D23EE23EF000E450E /* Preview Assets.xcassets in Resources */,
+				4ECBB5A223FDB19A003A2986 /* BachGavotteShort.mp3 in Resources */,
 				4E54C66A23EE23EF000E450E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,6 +178,7 @@
 				4E1346E623F18FAC00B629B3 /* DetailsView.swift in Sources */,
 				4E54C66623EE23EE000E450E /* DH_Cadence.xcdatamodeld in Sources */,
 				4E1346E923F1936700B629B3 /* Cadence.swift in Sources */,
+				4ECBB59E23FD8DC4003A2986 /* Player.swift in Sources */,
 				4E54C66823EE23EE000E450E /* ContentView.swift in Sources */,
 				4E54C66323EE23EE000E450E /* SceneDelegate.swift in Sources */,
 			);
@@ -314,7 +326,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dh.DH-Cadence";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dh.cadence;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -335,7 +347,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dh.DH-Cadence";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dh.cadence;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
