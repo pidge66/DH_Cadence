@@ -10,35 +10,52 @@ import AVFoundation
 
 class Player {
     private var sound = AVAudioPlayer()
+    private let audioSession = AVAudioSession.sharedInstance()  // to enable background playing
+
+    init() {
+        setupAudioSession()
+    }
     
-    func switchToSpeaker()
+    deinit {
+        stopSound()
+        print("deinit Player")
+    }
+    
+    func setupAudioSession()
     {
         do {
-            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playAndRecord)
+            try audioSession.setCategory(AVAudioSession.Category.playAndRecord)
+            //try audioSession.setCategory(AVAudioSession.Category.playback)
         } catch _ {
+            print( "Error setting audio session category")
         }
         do {
-            try AVAudioSession.sharedInstance().setActive(true)
+            try audioSession.setActive(true)
         } catch _ {
+            print( "Error activating audio session category")
         }
+        // *** Switch to speaker
         do {
-            try AVAudioSession.sharedInstance().overrideOutputAudioPort(AVAudioSession.PortOverride.none)
+            //try audioSession.overrideOutputAudioPort(AVAudioSession.PortOverride.speaker)
+            try audioSession.overrideOutputAudioPort(AVAudioSession.PortOverride.none)
         } catch _ {
+            print( "Error overriding audio session port to speaker")
         }
     }
     
-    func playSound() {
+    func playSound(_ soundFile: String) {
         //if let path = Bundle.main.path(forResource: "PinkPanther30", ofType: "wav") {
-        if let path = Bundle.main.path(forResource: "BachGavotteShort", ofType: "mp3") {
-            // Unfortunately, this is the ONLY system sound available
+        if let path = Bundle.main.path(forResource: soundFile, ofType: nil) {
+            
+            // *** Unfortunately, this is the ONLY system sound available
             //AudioServicesPlayAlertSound(kSystemSoundID_Vibrate)
+            
             do {
                 if sound.isPlaying {
                     print("already playing, stop first")
                     sound.stop()
                 } else {
                     print("not currently playing")
-                    switchToSpeaker()
                 }
                 sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
                 sound.prepareToPlay()
@@ -48,6 +65,7 @@ class Player {
             } catch {
                 print( "Error playing sound")
             }
+            
         } else {
             print( "Could not find file")
         }
@@ -57,10 +75,10 @@ class Player {
         if sound.isPlaying {
             sound.stop()
             do {
-                try AVAudioSession.sharedInstance().setActive(false)
+                try audioSession.setActive(false)
             } catch _ {
+                print( "Error stopping audio session")
             }
-
         }
     }
 }

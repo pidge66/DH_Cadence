@@ -22,7 +22,6 @@ struct ContentView: View {
     @State var myStateText = ""
     
     var body: some View {
-
         return NavigationView {
             List {
                 //ForEach (Array(self.myCadences.cadences.enumerated()), id: \.element.id) { (i, cadence) in
