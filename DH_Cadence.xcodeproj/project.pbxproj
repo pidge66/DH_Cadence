@@ -16,6 +16,13 @@
 		4E54C66A23EE23EF000E450E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E54C66923EE23EF000E450E /* Assets.xcassets */; };
 		4E54C66D23EE23EF000E450E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E54C66C23EE23EF000E450E /* Preview Assets.xcassets */; };
 		4E54C67023EE23EF000E450E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E54C66E23EE23EF000E450E /* LaunchScreen.storyboard */; };
+		4EB8AFCF24000D41008E53BD /* 250Hz.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EB8AFC724000D40008E53BD /* 250Hz.mp3 */; };
+		4EB8AFD024000D41008E53BD /* Gong2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EB8AFC824000D40008E53BD /* Gong2.mp3 */; };
+		4EB8AFD124000D41008E53BD /* Gong4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EB8AFC924000D40008E53BD /* Gong4.mp3 */; };
+		4EB8AFD224000D41008E53BD /* Gong3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EB8AFCA24000D40008E53BD /* Gong3.mp3 */; };
+		4EB8AFD424000D41008E53BD /* Gong1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EB8AFCC24000D40008E53BD /* Gong1.mp3 */; };
+		4EB8AFD524000D41008E53BD /* 440Hz.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EB8AFCD24000D41008E53BD /* 440Hz.mp3 */; };
+		4EB8AFD624000D41008E53BD /* 1000Hz.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EB8AFCE24000D41008E53BD /* 1000Hz.mp3 */; };
 		4ECBB59E23FD8DC4003A2986 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECBB59D23FD8DC4003A2986 /* Player.swift */; };
 		4ECBB5A223FDB19A003A2986 /* BachGavotteShort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4ECBB5A123FDB19A003A2986 /* BachGavotteShort.mp3 */; };
 		4ECBB5C823FED62D003A2986 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECBB5C723FED62D003A2986 /* Counter.swift */; };
@@ -33,6 +40,13 @@
 		4E54C66C23EE23EF000E450E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4E54C66F23EE23EF000E450E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E54C67123EE23EF000E450E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EB8AFC724000D40008E53BD /* 250Hz.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 250Hz.mp3; sourceTree = "<group>"; };
+		4EB8AFC824000D40008E53BD /* Gong2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Gong2.mp3; sourceTree = "<group>"; };
+		4EB8AFC924000D40008E53BD /* Gong4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Gong4.mp3; sourceTree = "<group>"; };
+		4EB8AFCA24000D40008E53BD /* Gong3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Gong3.mp3; sourceTree = "<group>"; };
+		4EB8AFCC24000D40008E53BD /* Gong1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Gong1.mp3; sourceTree = "<group>"; };
+		4EB8AFCD24000D41008E53BD /* 440Hz.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 440Hz.mp3; sourceTree = "<group>"; };
+		4EB8AFCE24000D41008E53BD /* 1000Hz.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 1000Hz.mp3; sourceTree = "<group>"; };
 		4ECBB59D23FD8DC4003A2986 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4ECBB5A123FDB19A003A2986 /* BachGavotteShort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BachGavotteShort.mp3; sourceTree = "<group>"; };
 		4ECBB5C723FED62D003A2986 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
@@ -76,13 +90,13 @@
 		4E54C65F23EE23EE000E450E /* DH_Cadence */ = {
 			isa = PBXGroup;
 			children = (
+				4EB8AFC624000C6E008E53BD /* Sounds */,
 				4E1346E723F1932A00B629B3 /* DataModels */,
 				4ECBB5C623FEB5FA003A2986 /* Helpers */,
 				4ECBB5C523FEB5D5003A2986 /* Views */,
 				4E54C66023EE23EE000E450E /* AppDelegate.swift */,
 				4E54C66223EE23EE000E450E /* SceneDelegate.swift */,
 				4E54C66923EE23EF000E450E /* Assets.xcassets */,
-				4ECBB5A123FDB19A003A2986 /* BachGavotteShort.mp3 */,
 				4E54C66E23EE23EF000E450E /* LaunchScreen.storyboard */,
 				4E54C67123EE23EF000E450E /* Info.plist */,
 				4E54C66423EE23EE000E450E /* DH_Cadence.xcdatamodeld */,
@@ -97,6 +111,21 @@
 				4E54C66C23EE23EF000E450E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4EB8AFC624000C6E008E53BD /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				4EB8AFC724000D40008E53BD /* 250Hz.mp3 */,
+				4EB8AFCD24000D41008E53BD /* 440Hz.mp3 */,
+				4EB8AFCE24000D41008E53BD /* 1000Hz.mp3 */,
+				4EB8AFCC24000D40008E53BD /* Gong1.mp3 */,
+				4EB8AFC824000D40008E53BD /* Gong2.mp3 */,
+				4EB8AFCA24000D40008E53BD /* Gong3.mp3 */,
+				4EB8AFC924000D40008E53BD /* Gong4.mp3 */,
+				4ECBB5A123FDB19A003A2986 /* BachGavotteShort.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		4ECBB5C523FEB5D5003A2986 /* Views */ = {
@@ -175,10 +204,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EB8AFD124000D41008E53BD /* Gong4.mp3 in Resources */,
+				4EB8AFD024000D41008E53BD /* Gong2.mp3 in Resources */,
 				4E54C67023EE23EF000E450E /* LaunchScreen.storyboard in Resources */,
+				4EB8AFD524000D41008E53BD /* 440Hz.mp3 in Resources */,
 				4E54C66D23EE23EF000E450E /* Preview Assets.xcassets in Resources */,
 				4ECBB5A223FDB19A003A2986 /* BachGavotteShort.mp3 in Resources */,
+				4EB8AFD624000D41008E53BD /* 1000Hz.mp3 in Resources */,
+				4EB8AFD224000D41008E53BD /* Gong3.mp3 in Resources */,
 				4E54C66A23EE23EF000E450E /* Assets.xcassets in Resources */,
+				4EB8AFCF24000D41008E53BD /* 250Hz.mp3 in Resources */,
+				4EB8AFD424000D41008E53BD /* Gong1.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

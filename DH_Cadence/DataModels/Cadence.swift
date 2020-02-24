@@ -13,8 +13,9 @@ import Combine
 struct Metronome { //: Identifiable {
     //public var id = UUID()
     var tone: String
-    var tempo: String
-    var repetitions: Int8
+    var selectedToneIndex: Int
+    var tempo: Int
+    var repetitions: Int
 }
 
 struct Cadence{  //: Identifiable, Equatable {
@@ -34,9 +35,9 @@ class ArrayCadences: ObservableObject {
     init() {
         self.cadences = [
             Cadence(name: "Cadence 1", repetitions: 10, metronomes: [
-                Metronome(tone: "Tone 1", tempo: "60", repetitions: 4),
-                Metronome(tone: "Tone 2", tempo: "60", repetitions: 7),
-                Metronome(tone: "Tone 3", tempo: "60", repetitions: 8),
+                Metronome(tone: "Tone 1", selectedToneIndex:0, tempo: 60, repetitions: 4),
+                Metronome(tone: "Tone 2", selectedToneIndex:0, tempo: 60, repetitions: 7),
+                Metronome(tone: "Tone 3", selectedToneIndex:0, tempo: 60, repetitions: 8),
             ]),
             Cadence(name: "Cadence 2", repetitions: 20, metronomes: [])
         ]

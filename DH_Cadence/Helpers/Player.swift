@@ -10,7 +10,9 @@ import AVFoundation
 
 class Player {
     private var sound = AVAudioPlayer()
-    private let audioSession = AVAudioSession.sharedInstance()  // to enable background playing
+    
+    // *** to enable background playing; need also to add Background Modes | Audio capability in project
+    private let audioSession = AVAudioSession.sharedInstance()
 
     init() {
         setupAudioSession()
@@ -53,7 +55,7 @@ class Player {
             do {
                 if sound.isPlaying {
                     print("already playing, stop first")
-                    sound.stop()
+                    //sound.stop()
                 } else {
                     print("not currently playing")
                 }
