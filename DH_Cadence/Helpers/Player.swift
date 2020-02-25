@@ -20,7 +20,7 @@ class Player {
     
     deinit {
         stopSound()
-        print("deinit Player")
+        //print("deinit Player")
     }
     
     func setupAudioSession()

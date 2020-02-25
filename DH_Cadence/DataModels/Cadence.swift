@@ -10,11 +10,12 @@ import Foundation
 import SwiftUI
 import Combine
 
+
 struct Metronome { //: Identifiable {
     //public var id = UUID()
     var tone: String
     var selectedToneIndex: Int
-    var tempo: Int
+    var tempo: Double
     var repetitions: Int
 }
 
@@ -31,13 +32,15 @@ struct Cadence{  //: Identifiable, Equatable {
 class ArrayCadences: ObservableObject {
     
     @Published var cadences: [Cadence]
-        
+    static let tones = ["250Hz.mp3", "440Hz.mp3", "1000Hz.mp3", "Gong1.mp3", "Gong2.mp3", "Gong3.mp3", "Gong4.mp3"]
+    static let tempos = [30.0, 60.0, 120.0, 240.0, 480.0]
+
     init() {
         self.cadences = [
             Cadence(name: "Cadence 1", repetitions: 10, metronomes: [
-                Metronome(tone: "Tone 1", selectedToneIndex:0, tempo: 60, repetitions: 4),
-                Metronome(tone: "Tone 2", selectedToneIndex:0, tempo: 60, repetitions: 7),
-                Metronome(tone: "Tone 3", selectedToneIndex:0, tempo: 60, repetitions: 8),
+                Metronome(tone: ArrayCadences.tones[0], selectedToneIndex:0, tempo: ArrayCadences.tempos[1], repetitions: 4),
+                Metronome(tone: ArrayCadences.tones[0], selectedToneIndex:0, tempo: ArrayCadences.tempos[1], repetitions: 7),
+                Metronome(tone: ArrayCadences.tones[0], selectedToneIndex:0, tempo: ArrayCadences.tempos[1], repetitions: 8),
             ]),
             Cadence(name: "Cadence 2", repetitions: 20, metronomes: [])
         ]

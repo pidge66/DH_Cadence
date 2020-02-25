@@ -18,9 +18,9 @@ struct DetailsView: View {
     
     let player = Player()
     @State private var selectedToneIndex = 0
-    @State private var selectedTone = ""
-    let tones = ["250Hz.mp3", "440Hz.mp3", "1000Hz.mp3", "Gong1.mp3", "Gong2.mp3", "Gong3.mp3", "Gong4.mp3"]
-    let tempos = [30, 60, 120, 240, 480]
+    @State private var currentMetronomeIndex = 0
+    //@State private var selectedTone = ""
+    @State private var pickerVisible = false
 
     var body: some View {
         
@@ -61,44 +61,44 @@ struct DetailsView: View {
                             TextField("Enter Tone Name", text: self.$cadence.metronomes[i].tone)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
 
-                            Text(self.cadence.metronomes[i].tone)
+                            Button(self.pickerVisible ? "Done" : "Select"){
+                                self.currentMetronomeIndex = i
+                                if self.pickerVisible {
+                                    self.selectedToneIndex = self.cadence.metronomes[i].selectedToneIndex
+                                    self.cadence.metronomes[i].tone = ArrayCadences.tones[self.selectedToneIndex]
+                                }
+                                self.pickerVisible.toggle()
+                            }.foregroundColor(self.pickerVisible ? .red : .blue)
                         }
                         
-                        //*** .pickerStyle choices:  WheelPickerStyle(), SegmentedPickerStyle(), DatePickerStyle(), DateWheelPickerStyle(), DefaultPickerStyle()
-                                
-//                        Picker(selection: self.$selectedToneIndex, label: Text("Tone")) {
-//                            ForEach(0 ..< self.tones.count) {
-//                                Text(self.tones[$0])
-//
-//                            }
-//                        }.pickerStyle(DefaultPickerStyle())
-                        
-                        // TODO: selectedToneIndex is SHARED among all pickers here!!
                         //Picker("Tone", selection: self.$selectedToneIndex, content: {
-                        Picker("Tone", selection: self.$cadence.metronomes[i].selectedToneIndex, content: {
-                            ForEach(0 ..< self.tones.count) {
-                                Text(self.tones[$0])
+                        if self.pickerVisible && i == self.currentMetronomeIndex {
+                            Picker("", selection: self.$cadence.metronomes[i].selectedToneIndex, content: {
+                                ForEach(0 ..< ArrayCadences.tones.count) {
+                                    Text(ArrayCadences.tones[$0])
+                                }
+                            }).onTapGesture {
+                                self.selectedToneIndex = self.cadence.metronomes[i].selectedToneIndex
+                                self.cadence.metronomes[i].tone = ArrayCadences.tones[self.selectedToneIndex]
+                                self.pickerVisible.toggle()
                             }
-                        }).onTapGesture {
-                            self.selectedToneIndex = self.cadence.metronomes[i].selectedToneIndex
-                            self.cadence.metronomes[i].tone = self.tones[self.selectedToneIndex]
-
                         }
-//                        HStack {
-//                            Text("Tempo:").bold()
-//                            TextField("Enter Tempo (beat per minute)", text: self.$cadence.metronomes[i].tempo)
-//                                .textFieldStyle(RoundedBorderTextFieldStyle())
-//                        }
+                        
                         HStack {
                             Text("Tempo:").bold()
-                            //Slider(value: self.$cadence.metronomes[i].tempo, in: 0...960, step: 60)
-                        }.padding(.all, 20)
+                            Text(String("\(self.cadence.metronomes[i].tempo.rounded())"))
+                            Slider(value: self.$cadence.metronomes[i].tempo, in: 30...960, step: 30) {_ in
+                                print("\(self.cadence.metronomes[i].tempo)")
+                            }
+                            Spacer()
+                        }
+                        
                         HStack {
                             Text("Repetitions:").bold()
                             Stepper(value: self.$cadence.metronomes[i].repetitions, in: 0...100, step: 1) {
                                 Text("\(self.cadence.metronomes[i].repetitions) times")
                             }
-                        }
+                        }.padding(.bottom, 20)
                     }
                 }
             }
@@ -110,7 +110,7 @@ struct DetailsView: View {
                 Button(action: {
                     //self.cadence.metronomes[0].tone = self.tones[self.selectedToneIndex]
                     //self.player.playSound(self.cadence.metronomes[0].tone)
-                    self.player.playSound(self.tones[self.selectedToneIndex])
+                    self.player.playSound(ArrayCadences.tones[self.selectedToneIndex])
                 }, label: {
                     Text("Run").font(.system(size: 24))
                 })
