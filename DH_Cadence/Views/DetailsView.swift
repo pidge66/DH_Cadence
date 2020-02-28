@@ -19,7 +19,6 @@ struct DetailsView: View {
     let player = Player()
     @State private var selectedToneIndex = 0
     @State private var currentMetronomeIndex = 0
-    //@State private var selectedTone = ""
     @State private var pickerVisible = false
 
     var body: some View {
@@ -30,7 +29,7 @@ struct DetailsView: View {
                 TextField("Enter Cadence Name", text: $cadence.name)		
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                 
-            }.padding(.top, 40)
+            }.padding(.top, 5	)
                         
             HStack {
                 Text("Repetitions:").bold()
@@ -83,11 +82,12 @@ struct DetailsView: View {
                                 self.pickerVisible.toggle()
                             }
                         }
-                        
+                        //.animation(Animation.easeInOut(duration: 2))
+
                         HStack {
                             Text("Tempo:").bold()
                             Text(String("\(self.cadence.metronomes[i].tempo.rounded())"))
-                            Slider(value: self.$cadence.metronomes[i].tempo, in: 30...960, step: 30) {_ in
+                            Slider(value: self.$cadence.metronomes[i].tempo, in: 30...480, step: 30) {_ in
                                 print("\(self.cadence.metronomes[i].tempo)")
                             }
                             Spacer()
@@ -100,6 +100,8 @@ struct DetailsView: View {
                             }
                         }.padding(.bottom, 20)
                     }
+                    .animation(Animation.easeInOut(duration: 1))
+
                 }
             }
 
@@ -108,9 +110,8 @@ struct DetailsView: View {
             HStack {
                 Spacer()
                 Button(action: {
-                    //self.cadence.metronomes[0].tone = self.tones[self.selectedToneIndex]
-                    //self.player.playSound(self.cadence.metronomes[0].tone)
-                    self.player.playSound(ArrayCadences.tones[self.selectedToneIndex])
+                    //self.player.playSound(ArrayCadences.tones[self.selectedToneIndex])
+                    self.player.playCadence(self.cadence)
                 }, label: {
                     Text("Run").font(.system(size: 24))
                 })
@@ -124,10 +125,10 @@ struct DetailsView: View {
             }.padding(.bottom, 40)
             
         }.navigationBarTitle(Text("\(cadence.name)"))
-        .padding(.leading, 20).padding(.trailing, 20)
-            .onDisappear {
-                self.player.stopSound()
-        }
+//        .padding(.leading, 20).padding(.trailing, 20)
+//            .onDisappear {
+//                self.player.stopSound()
+//        }
     }
 }
 

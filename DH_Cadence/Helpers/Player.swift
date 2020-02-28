@@ -10,9 +10,16 @@ import AVFoundation
 
 class Player {
     private var sound = AVAudioPlayer()
+    //private var cadence: Cadence
     
     // *** to enable background playing; need also to add Background Modes | Audio capability in project
     private let audioSession = AVAudioSession.sharedInstance()
+    
+    private var cadence: Cadence?
+    private var currentMetronomeIndex = 0
+    private var currentRepetiionCount = 0
+    private var myTimer: Timer?
+
 
     init() {
         setupAudioSession()
@@ -82,5 +89,38 @@ class Player {
                 print( "Error stopping audio session")
             }
         }
+    }
+    
+    @objc func nextBeat (timer: Timer) {
+        guard let m = cadence?.metronomes else {return}
+        print("metronomes in nextBeat: \(m)")
+        timer.invalidate()
+        
+        playSound(m[currentMetronomeIndex].tone)
+        currentRepetiionCount += 1
+        if currentRepetiionCount >= m[currentMetronomeIndex].repetitions {
+            currentMetronomeIndex += 1
+            if currentMetronomeIndex < m.count {
+                currentRepetiionCount = 0
+            } else {
+                stopSound()
+                return
+            }
+        }
+        let tsec = m[currentMetronomeIndex].tempo/60
+        myTimer = Timer.scheduledTimer(timeInterval: tsec, target: self, selector: #selector(nextBeat), userInfo: nil, repeats: true)
+    }
+    
+    func playCadence(_ myCadence: Cadence) {
+        cadence = myCadence
+        currentMetronomeIndex = 0
+        currentRepetiionCount = 0
+        cadence?.metronomes.forEach {
+            print("\($0)")
+        }
+        
+        // 1 sec preamble to kick it off before starting the cadence
+        myTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(nextBeat), userInfo: nil, repeats: false)
+
     }
 }

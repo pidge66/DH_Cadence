@@ -38,9 +38,9 @@ class ArrayCadences: ObservableObject {
     init() {
         self.cadences = [
             Cadence(name: "Cadence 1", repetitions: 10, metronomes: [
-                Metronome(tone: ArrayCadences.tones[0], selectedToneIndex:0, tempo: ArrayCadences.tempos[1], repetitions: 4),
-                Metronome(tone: ArrayCadences.tones[0], selectedToneIndex:0, tempo: ArrayCadences.tempos[1], repetitions: 7),
-                Metronome(tone: ArrayCadences.tones[0], selectedToneIndex:0, tempo: ArrayCadences.tempos[1], repetitions: 8),
+                Metronome(tone: ArrayCadences.tones[0], selectedToneIndex:0, tempo: 60.0, repetitions: 4),
+                Metronome(tone: ArrayCadences.tones[0], selectedToneIndex:0, tempo: 60.0, repetitions: 7),
+                Metronome(tone: ArrayCadences.tones[0], selectedToneIndex:0, tempo: 60.0, repetitions: 8),
             ]),
             Cadence(name: "Cadence 2", repetitions: 20, metronomes: [])
         ]
