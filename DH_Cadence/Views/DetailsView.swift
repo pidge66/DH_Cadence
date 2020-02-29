@@ -60,15 +60,15 @@ struct DetailsView: View {
                             TextField("Enter Tone Name", text: self.$cadence.metronomes[i].tone)
                                 .textFieldStyle(RoundedBorderTextFieldStyle())
 
-                            Button(self.pickerVisible ? "Done" : "Select"){
+                            Button(self.pickerVisible && i == self.currentMetronomeIndex ? "Done" : "Select"){
                                 self.currentMetronomeIndex = i
                                 if self.pickerVisible {
                                     self.selectedToneIndex = self.cadence.metronomes[i].selectedToneIndex
                                     self.cadence.metronomes[i].tone = ArrayCadences.tones[self.selectedToneIndex]
                                 }
                                 self.pickerVisible.toggle()
-                                self.player.playSound(ArrayCadences.tones[ self.cadence.metronomes[i].selectedToneIndex])
-                            }.foregroundColor(self.pickerVisible ? .red : .blue)
+                                self.player.playSound(self.cadence.metronomes[i].tone)
+                            }.foregroundColor(self.pickerVisible && i == self.currentMetronomeIndex ? .red : .blue)
                         }
                         
                         //Picker("Tone", selection: self.$selectedToneIndex, content: {
@@ -81,11 +81,9 @@ struct DetailsView: View {
                                 self.selectedToneIndex = self.cadence.metronomes[i].selectedToneIndex
                                 self.cadence.metronomes[i].tone = ArrayCadences.tones[self.selectedToneIndex]
                                 self.pickerVisible.toggle()
-                                self.player.playSound(ArrayCadences.tones[ self.cadence.metronomes[i].selectedToneIndex])
-
                             }
                         }
-                        .animation(Animation.easeInOut(duration: 1))
+                        //.animation(Animation.easeInOut(duration: 2))
 
                         HStack {
                             Text("Tempo:").bold()
@@ -103,7 +101,7 @@ struct DetailsView: View {
                             }
                         }.padding(.bottom, 20)
                     }
-                    //.animation(Animation.easeInOut(duration: 1))
+                    .animation(Animation.easeInOut(duration: 1))
 
                 }
             }
@@ -113,6 +111,7 @@ struct DetailsView: View {
             HStack {
                 Spacer()
                 Button(action: {
+                    //self.player.playSound(ArrayCadences.tones[self.selectedToneIndex])
                     self.player.playCadence(self.cadence)
                 }, label: {
                     Text("Run").font(.system(size: 24))
@@ -127,7 +126,7 @@ struct DetailsView: View {
             }.padding(.bottom, 40)
             
         }.navigationBarTitle(Text("\(cadence.name)"))
-            .padding(.leading, 20).padding(.trailing, 20)
+        .padding(.leading, 20).padding(.trailing, 20)
 //            .onDisappear {
 //                self.player.stopSound()
 //        }
