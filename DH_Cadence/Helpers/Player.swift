@@ -16,9 +16,11 @@ class Player {
     private let audioSession = AVAudioSession.sharedInstance()
     
     private var cadence: Cadence?
+    private var currentIteriation = 0
     private var currentMetronomeIndex = 0
-    private var currentRepetiionCount = 0
+    private var currentRepetiion = 0
     private var myTimer: Timer?
+    private var active = false
 
 
     init() {
@@ -27,7 +29,6 @@ class Player {
     
     deinit {
         stopSound()
-        //print("deinit Player")
     }
     
     func setupAudioSession()
@@ -62,13 +63,10 @@ class Player {
             do {
                 if sound.isPlaying {
                     print("already playing, stop first")
-                    //sound.stop()
-                } else {
-                    print("not currently playing")
+                    sound.stop()
                 }
                 sound = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
                 sound.prepareToPlay()
-                print("Playing sound")
                 sound.play()
                 
             } catch {
@@ -92,19 +90,24 @@ class Player {
     }
     
     @objc func nextBeat (timer: Timer) {
-        guard let m = cadence?.metronomes else {return}
-        print("metronomes in nextBeat: \(m)")
         timer.invalidate()
+        guard let r = cadence?.repetitions else {return}
+        guard let m = cadence?.metronomes else {return}
+        if !active {return}
+        if m.count <= 0 {return}
         
         playSound(m[currentMetronomeIndex].tone)
-        currentRepetiionCount += 1
-        if currentRepetiionCount >= m[currentMetronomeIndex].repetitions {
+        
+        currentRepetiion += 1
+        if currentRepetiion >= m[currentMetronomeIndex].repetitions {
+            currentRepetiion = 0
             currentMetronomeIndex += 1
-            if currentMetronomeIndex < m.count {
-                currentRepetiionCount = 0
-            } else {
-                stopSound()
-                return
+            if currentMetronomeIndex >= m.count {
+                currentMetronomeIndex = 0
+                currentIteriation += 1
+                if currentIteriation >= r {
+                    return
+                }
             }
         }
         let tsec = m[currentMetronomeIndex].tempo/60
@@ -113,14 +116,20 @@ class Player {
     
     func playCadence(_ myCadence: Cadence) {
         cadence = myCadence
+        currentIteriation = 0
         currentMetronomeIndex = 0
-        currentRepetiionCount = 0
-        cadence?.metronomes.forEach {
+        currentRepetiion = 0
+        myCadence.metronomes.forEach({
             print("\($0)")
-        }
+        })
         
         // 1 sec preamble to kick it off before starting the cadence
         myTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(nextBeat), userInfo: nil, repeats: false)
-
+        
+        active = true
+    }
+    
+    func stopCadence() {
+        active = false
     }
 }

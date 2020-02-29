@@ -67,6 +67,7 @@ struct DetailsView: View {
                                     self.cadence.metronomes[i].tone = ArrayCadences.tones[self.selectedToneIndex]
                                 }
                                 self.pickerVisible.toggle()
+                                self.player.playSound(ArrayCadences.tones[ self.cadence.metronomes[i].selectedToneIndex])
                             }.foregroundColor(self.pickerVisible ? .red : .blue)
                         }
                         
@@ -80,9 +81,11 @@ struct DetailsView: View {
                                 self.selectedToneIndex = self.cadence.metronomes[i].selectedToneIndex
                                 self.cadence.metronomes[i].tone = ArrayCadences.tones[self.selectedToneIndex]
                                 self.pickerVisible.toggle()
+                                self.player.playSound(ArrayCadences.tones[ self.cadence.metronomes[i].selectedToneIndex])
+
                             }
                         }
-                        //.animation(Animation.easeInOut(duration: 2))
+                        .animation(Animation.easeInOut(duration: 1))
 
                         HStack {
                             Text("Tempo:").bold()
@@ -100,7 +103,7 @@ struct DetailsView: View {
                             }
                         }.padding(.bottom, 20)
                     }
-                    .animation(Animation.easeInOut(duration: 1))
+                    //.animation(Animation.easeInOut(duration: 1))
 
                 }
             }
@@ -110,14 +113,13 @@ struct DetailsView: View {
             HStack {
                 Spacer()
                 Button(action: {
-                    //self.player.playSound(ArrayCadences.tones[self.selectedToneIndex])
                     self.player.playCadence(self.cadence)
                 }, label: {
                     Text("Run").font(.system(size: 24))
                 })
                 Spacer()
                 Button(action: {
-                    self.player.stopSound()
+                    self.player.stopCadence()
                 }, label: {
                     Text("Stop").font(.system(size: 24))
                 })
@@ -125,7 +127,7 @@ struct DetailsView: View {
             }.padding(.bottom, 40)
             
         }.navigationBarTitle(Text("\(cadence.name)"))
-//        .padding(.leading, 20).padding(.trailing, 20)
+            .padding(.leading, 20).padding(.trailing, 20)
 //            .onDisappear {
 //                self.player.stopSound()
 //        }
