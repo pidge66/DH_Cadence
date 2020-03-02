@@ -20,11 +20,11 @@ struct DetailsView: View {
     @State private var selectedToneIndex = 0
     @State private var currentMetronomeIndex = 0
     @State private var pickerVisible = false
-
+    
     var body: some View {
         
         return VStack {
- 
+            
             VStack {
                 HStack {
                     Text("Name:").bold()
@@ -53,7 +53,7 @@ struct DetailsView: View {
                 }
             }
             List {
- 
+                
                 //ForEach (Array(self.myCadences.cadences.enumerated()), id: \.element.id) { (i, cadence) in
                 ForEach (cadence.metronomes.indices, id: \.self) { i in
                     // *** Can't pass cadence as binding!  so need index and thus requires id
@@ -62,8 +62,8 @@ struct DetailsView: View {
                         HStack {
                             Text("Tone:").bold()
                             TextField("Enter Tone Name", text: self.$cadence.metronomes[i].tone)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-
+                                .textFieldStyle(RoundedBorderTextFieldStyle()).opacity(0.5)
+                            
                             Button(self.pickerVisible && i == self.currentMetronomeIndex ? "Done" : "Select"){
                                 self.currentMetronomeIndex = i
                                 if self.pickerVisible {
@@ -73,7 +73,8 @@ struct DetailsView: View {
                                 self.pickerVisible.toggle()
                                 self.player.playSound(self.cadence.metronomes[i].tone)
                             }.foregroundColor(self.pickerVisible && i == self.currentMetronomeIndex ? .red : .blue)
-                        }
+                        }   .padding(.leading, 5)
+                            .padding(.trailing, 5)
                         
                         //Picker("Tone", selection: self.$selectedToneIndex, content: {
                         if self.pickerVisible && i == self.currentMetronomeIndex {
@@ -88,7 +89,7 @@ struct DetailsView: View {
                             }
                         }
                         //.animation(Animation.easeInOut(duration: 2))
-
+                        
                         HStack {
                             Text("Tempo:").bold()
                             Text(String("\(self.cadence.metronomes[i].tempo.rounded())"))
@@ -96,7 +97,8 @@ struct DetailsView: View {
                                 print("\(self.cadence.metronomes[i].tempo)")
                             }
                             Spacer()
-                        }
+                        }   .padding(.leading, 5)
+                            .padding(.trailing, 5)
                         
                         HStack {
                             Text("Repetitions:").bold()
@@ -104,13 +106,16 @@ struct DetailsView: View {
                                 Text("\(self.cadence.metronomes[i].repetitions) times")
                             }
                         }.padding(.bottom, 20)
+                            .padding(.leading, 5)
+                            .padding(.trailing, 5)
+                        
                     }
                     .animation(Animation.easeInOut(duration: self.pickerVisible ? 0.5 : 0))
                     .padding(.top, 10)
-
+                    .background(Color.baseRockBlue)
                 }
             }
-
+            
             Spacer()
             
             HStack {
@@ -131,10 +136,10 @@ struct DetailsView: View {
             }.padding(.bottom, 40)
             
         }.navigationBarTitle(Text("\(cadence.name)"))
-        .padding(.leading, 20).padding(.trailing, 20)
-//            .onDisappear {
-//                self.player.stopSound()
-//        }
+            .padding(.leading, 10).padding(.trailing, 10)
+        //            .onDisappear {
+        //                self.player.stopSound()
+        //        }
     }
 }
 
