@@ -97,6 +97,7 @@ class Player {
         if m.count <= 0 {return}
         
         playSound(m[currentMetronomeIndex].tone)
+        print("nextBeat")
         
         currentRepetiion += 1
         if currentRepetiion >= m[currentMetronomeIndex].repetitions {
@@ -115,6 +116,10 @@ class Player {
     }
     
     func playCadence(_ myCadence: Cadence) {
+        if active {
+            print("Already active")
+            return
+        }
         cadence = myCadence
         currentIteriation = 0
         currentMetronomeIndex = 0
@@ -122,7 +127,7 @@ class Player {
         myCadence.metronomes.forEach({
             print("\($0)")
         })
-        
+
         // 1 sec preamble to kick it off before starting the cadence
         myTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(nextBeat), userInfo: nil, repeats: false)
         
@@ -131,5 +136,6 @@ class Player {
     
     func stopCadence() {
         active = false
+        stopSound()
     }
 }
