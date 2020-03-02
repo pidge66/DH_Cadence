@@ -97,7 +97,6 @@ class Player {
         if m.count <= 0 {return}
         
         playSound(m[currentMetronomeIndex].tone)
-        print("nextBeat")
         
         currentRepetiion += 1
         if currentRepetiion >= m[currentMetronomeIndex].repetitions {
@@ -117,6 +116,7 @@ class Player {
     
     func playCadence(_ myCadence: Cadence) {
         if active {
+            stopCadence()
             print("Already active")
             return
         }

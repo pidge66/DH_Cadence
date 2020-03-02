@@ -24,32 +24,36 @@ struct DetailsView: View {
     var body: some View {
         
         return VStack {
-            HStack {
-                Text("Name:").bold()
-                TextField("Enter Cadence Name", text: $cadence.name)		
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+ 
+            VStack {
+                HStack {
+                    Text("Name:").bold()
+                    TextField("Enter Cadence Name", text: $cadence.name)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
+                }.padding(.top, 5    )
                 
-            }.padding(.top, 5	)
-                        
-            HStack {
-                Text("Repetitions:").bold()
-                Stepper(value: $cadence.repetitions, in: 0...100, step: 1) {
-                    Text("\(cadence.repetitions) times")
+                HStack {
+                    Text("Repetitions:").bold()
+                    Stepper(value: $cadence.repetitions, in: 0...100, step: 1) {
+                        Text("\(cadence.repetitions) times")
+                    }
+                }
+                
+                Divider().padding(.top, 10).padding(.bottom, 20)
+                
+                HStack {
+                    Text("Metronomes:").bold()
+                    Spacer()
+                    Button(action: {
+                        self.cadence.metronomes.append(Metronome(tone: ArrayCadences.tones[1], selectedToneIndex:1, tempo: 60.0, repetitions: 1))
+                    }, label: {
+                        Image(systemName: "plus.circle")
+                            .font(.system(size: 36))                })
                 }
             }
-
-            Divider().padding(.top, 10).padding(.bottom, 20)
-            
-            HStack {
-                Text("Metronomes:").bold()
-                Spacer()
-                Button(action: {
-                }, label: {
-                    Image(systemName: "plus.circle")
-                        .font(.system(size: 36))                })
-            }
-
             List {
+ 
                 //ForEach (Array(self.myCadences.cadences.enumerated()), id: \.element.id) { (i, cadence) in
                 ForEach (cadence.metronomes.indices, id: \.self) { i in
                     // *** Can't pass cadence as binding!  so need index and thus requires id
@@ -101,7 +105,8 @@ struct DetailsView: View {
                             }
                         }.padding(.bottom, 20)
                     }
-                    .animation(Animation.easeInOut(duration: 1))
+                    .animation(Animation.easeInOut(duration: self.pickerVisible ? 0.5 : 0))
+                    .padding(.top, 10)
 
                 }
             }
