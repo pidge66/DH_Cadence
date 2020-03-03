@@ -52,8 +52,8 @@ struct DetailsView: View {
                             .font(.system(size: 36))                })
                 }
             }
+            
             List {
-                
                 //ForEach (Array(self.myCadences.cadences.enumerated()), id: \.element.id) { (i, cadence) in
                 ForEach (cadence.metronomes.indices, id: \.self) { i in
                     // *** Can't pass cadence as binding!  so need index and thus requires id
@@ -113,8 +113,11 @@ struct DetailsView: View {
                     .animation(Animation.easeInOut(duration: self.pickerVisible ? 0.5 : 0))
                     .padding(.top, 10)
                     .background(Color.baseRockBlue)
-                }
-            }
+                    
+                } // ForEach
+                .onDelete(perform: delete)
+                
+            } // List
             
             Spacer()
             
@@ -141,6 +144,13 @@ struct DetailsView: View {
         //                self.player.stopSound()
         //        }
     }
+
+    func delete(at offsets: IndexSet) {
+        cadence.metronomes.remove(atOffsets: offsets)
+//        guard let index = offsets.first else {return}
+//        cadence.metronomes.remove(at: index)
+    }
+
 }
 
 //struct DetailsView_Previews: PreviewProvider {

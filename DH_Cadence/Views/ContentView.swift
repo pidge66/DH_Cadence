@@ -18,7 +18,7 @@ struct ContentView: View {
 //    ]
         
 //    private lazy var count = cadences.count
-    @ObservedObject var myCadences :ArrayCadences = ArrayCadences()
+    @ObservedObject var myCadences : ArrayCadences = ArrayCadences()
     @State var myStateText = ""
     
     var body: some View {
@@ -33,20 +33,24 @@ struct ContentView: View {
                         Text("\(self.myCadences.cadences[i].name)")
                     }
                     
-                }
+                }.onDelete(perform: delete)
             }
             .navigationBarTitle(Text("CADENCES"))
             .padding(.leading, 20)
             .padding(.trailing, 20)
             .navigationBarItems(trailing: Button(action: {
                 self.myCadences.cadences.append(
-                    Cadence(name: "<New Cadence>", repetitions: 10, metronomes: []))
+                    Cadence(name: "Untitled", repetitions: 1, metronomes: []))
                 print(self.myCadences.cadences.count)
             }, label: {
                 Image(systemName: "plus.circle.fill")
                     .font(.system(size: 36))
             }))
         }
+    }
+    
+    func delete(at offsets: IndexSet) {
+        myCadences.cadences.remove(atOffsets: offsets)
     }
     
     struct ContentView_Previews: PreviewProvider {
