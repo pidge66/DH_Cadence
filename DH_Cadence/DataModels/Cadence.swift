@@ -11,18 +11,16 @@ import SwiftUI
 import Combine
 
 
-struct Metronome { //: Identifiable {
-    //public var id = UUID()
+struct Metronome : Identifiable {
+    public var id = UUID()
     var tone: String
     var selectedToneIndex: Int
     var tempo: Double
     var repetitions: Int
 }
 
-struct Cadence{  //: Identifiable, Equatable {
-
+struct Cadence : Identifiable {//}, Equatable {
     public var id = UUID()
-    
     var name: String = ""
     var repetitions: Int = 0
     var metronomes: [Metronome] = []

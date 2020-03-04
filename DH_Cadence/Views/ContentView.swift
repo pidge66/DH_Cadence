@@ -11,14 +11,8 @@ import SwiftUI
 import Combine
 
 struct ContentView: View {
-//    @State var cadences: [Cadence] = [Cadence(name: "Cadence 1", repetitions: 10, metronomes: []),
-//                          Cadence(name: "Cadence 2", repetitions: 10, metronomes: [])]
-//    @ObservedObject var cadences: [Cadence] = [
-//        Cadence(name: "Cadence 2", repetitions: 10, metronomes: [])
-//    ]
-        
-//    private lazy var count = cadences.count
-    @ObservedObject var myCadences : ArrayCadences = ArrayCadences()
+    
+    @ObservedObject var myCadences : ArrayCadences = ArrayCadences()  // *** due to ForEach
     @State var myStateText = ""
     
     var body: some View {
