@@ -26,6 +26,10 @@
 		4EB6B714240D5B5C00486E8F /* AvenirNextCondensed-UltraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4EB6B70A240D5B5C00486E8F /* AvenirNextCondensed-UltraLight.ttf */; };
 		4EB6B715240D5B5C00486E8F /* CustomFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB6B70B240D5B5C00486E8F /* CustomFont.swift */; };
 		4EB6B716240D5B5C00486E8F /* Palette+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB6B70C240D5B5C00486E8F /* Palette+Color.swift */; };
+		4EB6B7252410328300486E8F /* TCadence+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB6B7212410328300486E8F /* TCadence+CoreDataClass.swift */; };
+		4EB6B7262410328300486E8F /* TCadence+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB6B7222410328300486E8F /* TCadence+CoreDataProperties.swift */; };
+		4EB6B7272410328300486E8F /* TMetronome+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB6B7232410328300486E8F /* TMetronome+CoreDataClass.swift */; };
+		4EB6B7282410328300486E8F /* TMetronome+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB6B7242410328300486E8F /* TMetronome+CoreDataProperties.swift */; };
 		4EB8AFCF24000D41008E53BD /* 250Hz.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EB8AFC724000D40008E53BD /* 250Hz.mp3 */; };
 		4EB8AFD024000D41008E53BD /* Gong2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EB8AFC824000D40008E53BD /* Gong2.mp3 */; };
 		4EB8AFD124000D41008E53BD /* Gong4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EB8AFC924000D40008E53BD /* Gong4.mp3 */; };
@@ -60,6 +64,10 @@
 		4EB6B70A240D5B5C00486E8F /* AvenirNextCondensed-UltraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCondensed-UltraLight.ttf"; sourceTree = "<group>"; };
 		4EB6B70B240D5B5C00486E8F /* CustomFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFont.swift; sourceTree = "<group>"; };
 		4EB6B70C240D5B5C00486E8F /* Palette+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Palette+Color.swift"; sourceTree = "<group>"; };
+		4EB6B7212410328300486E8F /* TCadence+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TCadence+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4EB6B7222410328300486E8F /* TCadence+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TCadence+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4EB6B7232410328300486E8F /* TMetronome+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TMetronome+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4EB6B7242410328300486E8F /* TMetronome+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TMetronome+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4EB8AFC724000D40008E53BD /* 250Hz.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 250Hz.mp3; sourceTree = "<group>"; };
 		4EB8AFC824000D40008E53BD /* Gong2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Gong2.mp3; sourceTree = "<group>"; };
 		4EB8AFC924000D40008E53BD /* Gong4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Gong4.mp3; sourceTree = "<group>"; };
@@ -110,6 +118,7 @@
 		4E54C65F23EE23EE000E450E /* DH_Cadence */ = {
 			isa = PBXGroup;
 			children = (
+				4EB6B718241031E600486E8F /* Core Data */,
 				4EB6B701240D5B5C00486E8F /* Theming */,
 				4EB8AFC624000C6E008E53BD /* Sounds */,
 				4E1346E723F1932A00B629B3 /* DataModels */,
@@ -157,6 +166,17 @@
 				4EB6B70A240D5B5C00486E8F /* AvenirNextCondensed-UltraLight.ttf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		4EB6B718241031E600486E8F /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				4EB6B7212410328300486E8F /* TCadence+CoreDataClass.swift */,
+				4EB6B7222410328300486E8F /* TCadence+CoreDataProperties.swift */,
+				4EB6B7232410328300486E8F /* TMetronome+CoreDataClass.swift */,
+				4EB6B7242410328300486E8F /* TMetronome+CoreDataProperties.swift */,
+			);
+			path = "Core Data";
 			sourceTree = "<group>";
 		};
 		4EB8AFC624000C6E008E53BD /* Sounds */ = {
@@ -281,11 +301,15 @@
 				4E54C66123EE23EE000E450E /* AppDelegate.swift in Sources */,
 				4E1346E623F18FAC00B629B3 /* DetailsView.swift in Sources */,
 				4E54C66623EE23EE000E450E /* DH_Cadence.xcdatamodeld in Sources */,
+				4EB6B7252410328300486E8F /* TCadence+CoreDataClass.swift in Sources */,
 				4E1346E923F1936700B629B3 /* Cadence.swift in Sources */,
 				4ECBB59E23FD8DC4003A2986 /* Player.swift in Sources */,
 				4EB6B715240D5B5C00486E8F /* CustomFont.swift in Sources */,
 				4EB6B716240D5B5C00486E8F /* Palette+Color.swift in Sources */,
+				4EB6B7272410328300486E8F /* TMetronome+CoreDataClass.swift in Sources */,
 				4EB6B70D240D5B5C00486E8F /* ScaledFont.swift in Sources */,
+				4EB6B7282410328300486E8F /* TMetronome+CoreDataProperties.swift in Sources */,
+				4EB6B7262410328300486E8F /* TCadence+CoreDataProperties.swift in Sources */,
 				4EB6B70E240D5B5C00486E8F /* CustomTextStyle.swift in Sources */,
 				4E54C66823EE23EE000E450E /* ContentView.swift in Sources */,
 				4E54C66323EE23EE000E450E /* SceneDelegate.swift in Sources */,

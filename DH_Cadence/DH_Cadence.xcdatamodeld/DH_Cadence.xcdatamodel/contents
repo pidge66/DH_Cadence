@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="18G1012" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="TCadence" representedClassName="TCadence" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="repetitions" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="metronomes" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="TMetronome"/>
+    </entity>
+    <entity name="TMetronome" representedClassName="TMetronome" syncable="YES">
+        <attribute name="repetitions" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="selectedToneIndex" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="tempo" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="tone" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="TCadence" positionX="-328.53515625" positionY="-5.91015625" width="128" height="88"/>
+        <element name="TMetronome" positionX="-133.69921875" positionY="-16.8828125" width="128" height="103"/>
+    </elements>
 </model>

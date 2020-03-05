@@ -11,12 +11,19 @@ import SwiftUI
 import Combine
 
 struct ContentView: View {
-    
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(entity: TCadence.entity(), sortDescriptors: []) var tcandences: FetchedResults<TCadence>
     @ObservedObject var myCadences : ArrayCadences = ArrayCadences()  // *** due to ForEach
     @State var myStateText = ""
     
     var body: some View {
         return NavigationView {
+//            List {
+//                ForEach (_tcandences, id: \.self) { tc in
+//
+//                }
+//            }
+
             List {
                 //ForEach (Array(self.myCadences.cadences.enumerated()), id: \.element.id) { (i, cadence) in
                 ForEach (self.myCadences.cadences.indices, id: \.self) { i in
@@ -29,6 +36,7 @@ struct ContentView: View {
                     
                 }.onDelete(perform: delete)
             }
+ 
             .navigationBarTitle(Text("CADENCES"))
             .padding(.leading, 20)
             .padding(.trailing, 20)
