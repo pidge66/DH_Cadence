@@ -137,28 +137,12 @@ struct DetailsView: View {
                             
                             Button(self.pickerVisible && i == self.currentMetronomeIndex ? "Done" : "Select"){
                                 self.currentMetronomeIndex = i
-                                if self.pickerVisible {
-                                    self.selectedToneIndex = self.cadence.metronomes[i].selectedToneIndex
-                                    self.cadence.metronomes[i].tone = ArrayCadences.tones[self.selectedToneIndex]
-                                }
                                 self.pickerVisible.toggle()
                                 self.player.playSound(self.cadence.metronomes[i].tone)
                             }.foregroundColor(self.pickerVisible && i == self.currentMetronomeIndex ? .red : .blue)
                         }   .padding(.leading, 5)
                             .padding(.trailing, 5)
                         
-                        //Picker("Tone", selection: self.$selectedToneIndex, content: {
-                        if self.pickerVisible && i == self.currentMetronomeIndex {
-                            Picker("", selection: self.$cadence.metronomes[i].selectedToneIndex, content: {
-                                ForEach(0 ..< ArrayCadences.tones.count) {
-                                    Text(ArrayCadences.tones[$0])
-                                }
-                            }).onTapGesture {
-                                self.selectedToneIndex = self.cadence.metronomes[i].selectedToneIndex
-                                self.cadence.metronomes[i].tone = ArrayCadences.tones[self.selectedToneIndex]
-                                self.pickerVisible.toggle()
-                            }
-                        }
                         
                         HStack {
                             Text("Tempo:").bold()
@@ -183,7 +167,22 @@ struct DetailsView: View {
                     .animation(Animation.easeInOut(duration: self.pickerVisible ? 0.5 : 0))
                     .padding(.top, 10)
                     .background(Color.baseRockBlue)
-                    
+                    .sheet(isPresented: self.$pickerVisible) {
+                        VStack{
+                            // *** for some reason, Picker alone would cause compiler error?1
+                            Text("Current Selection: " + self.cadence.metronomes[i].tone)
+                            Picker("", selection: self.$cadence.metronomes[i].selectedToneIndex, content: {
+                                ForEach(0 ..< ArrayCadences.tones.count) {
+                                    Text(ArrayCadences.tones[$0])
+                                }
+                            })
+                                .onTapGesture {
+                                    self.selectedToneIndex = self.cadence.metronomes[i].selectedToneIndex
+                                    self.cadence.metronomes[i].tone = ArrayCadences.tones[self.selectedToneIndex]
+                                    self.pickerVisible.toggle()
+                            }
+                        } //VStack
+                    } // sheet
                 } // ForEach
                 
             } // List
