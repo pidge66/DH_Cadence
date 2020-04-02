@@ -16,6 +16,8 @@
 		4E54C66A23EE23EF000E450E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E54C66923EE23EF000E450E /* Assets.xcassets */; };
 		4E54C66D23EE23EF000E450E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E54C66C23EE23EF000E450E /* Preview Assets.xcassets */; };
 		4E54C67023EE23EF000E450E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E54C66E23EE23EF000E450E /* LaunchScreen.storyboard */; };
+		4E7887F4242B92700030B66E /* Beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E7887F3242B92700030B66E /* Beep.mp3 */; };
+		4E7887FA242B98FA0030B66E /* Slap.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4E7887F9242B98FA0030B66E /* Slap.mp3 */; };
 		4EB6B70D240D5B5C00486E8F /* ScaledFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB6B702240D5B5C00486E8F /* ScaledFont.swift */; };
 		4EB6B70E240D5B5C00486E8F /* CustomTextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB6B703240D5B5C00486E8F /* CustomTextStyle.swift */; };
 		4EB6B70F240D5B5C00486E8F /* AvenirNextCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4EB6B705240D5B5C00486E8F /* AvenirNextCondensed-Regular.ttf */; };
@@ -32,8 +34,7 @@
 		4EB6B7282410328300486E8F /* TMetronome+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB6B7242410328300486E8F /* TMetronome+CoreDataProperties.swift */; };
 		4EB8AFCF24000D41008E53BD /* 250Hz.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EB8AFC724000D40008E53BD /* 250Hz.mp3 */; };
 		4EB8AFD024000D41008E53BD /* Gong2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EB8AFC824000D40008E53BD /* Gong2.mp3 */; };
-		4EB8AFD124000D41008E53BD /* Gong4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EB8AFC924000D40008E53BD /* Gong4.mp3 */; };
-		4EB8AFD224000D41008E53BD /* Gong3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EB8AFCA24000D40008E53BD /* Gong3.mp3 */; };
+		4EB8AFD124000D41008E53BD /* Gong3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EB8AFC924000D40008E53BD /* Gong3.mp3 */; };
 		4EB8AFD424000D41008E53BD /* Gong1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EB8AFCC24000D40008E53BD /* Gong1.mp3 */; };
 		4EB8AFD524000D41008E53BD /* 440Hz.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EB8AFCD24000D41008E53BD /* 440Hz.mp3 */; };
 		4EB8AFD624000D41008E53BD /* 1000Hz.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EB8AFCE24000D41008E53BD /* 1000Hz.mp3 */; };
@@ -54,6 +55,8 @@
 		4E54C66C23EE23EF000E450E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4E54C66F23EE23EF000E450E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E54C67123EE23EF000E450E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E7887F3242B92700030B66E /* Beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Beep.mp3; sourceTree = "<group>"; };
+		4E7887F9242B98FA0030B66E /* Slap.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Slap.mp3; sourceTree = "<group>"; };
 		4EB6B702240D5B5C00486E8F /* ScaledFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaledFont.swift; sourceTree = "<group>"; };
 		4EB6B703240D5B5C00486E8F /* CustomTextStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextStyle.swift; sourceTree = "<group>"; };
 		4EB6B705240D5B5C00486E8F /* AvenirNextCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextCondensed-Regular.ttf"; sourceTree = "<group>"; };
@@ -70,8 +73,7 @@
 		4EB6B7242410328300486E8F /* TMetronome+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TMetronome+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		4EB8AFC724000D40008E53BD /* 250Hz.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 250Hz.mp3; sourceTree = "<group>"; };
 		4EB8AFC824000D40008E53BD /* Gong2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Gong2.mp3; sourceTree = "<group>"; };
-		4EB8AFC924000D40008E53BD /* Gong4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Gong4.mp3; sourceTree = "<group>"; };
-		4EB8AFCA24000D40008E53BD /* Gong3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Gong3.mp3; sourceTree = "<group>"; };
+		4EB8AFC924000D40008E53BD /* Gong3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Gong3.mp3; sourceTree = "<group>"; };
 		4EB8AFCC24000D40008E53BD /* Gong1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Gong1.mp3; sourceTree = "<group>"; };
 		4EB8AFCD24000D41008E53BD /* 440Hz.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 440Hz.mp3; sourceTree = "<group>"; };
 		4EB8AFCE24000D41008E53BD /* 1000Hz.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 1000Hz.mp3; sourceTree = "<group>"; };
@@ -185,10 +187,11 @@
 				4EB8AFC724000D40008E53BD /* 250Hz.mp3 */,
 				4EB8AFCD24000D41008E53BD /* 440Hz.mp3 */,
 				4EB8AFCE24000D41008E53BD /* 1000Hz.mp3 */,
+				4E7887F3242B92700030B66E /* Beep.mp3 */,
 				4EB8AFCC24000D40008E53BD /* Gong1.mp3 */,
 				4EB8AFC824000D40008E53BD /* Gong2.mp3 */,
-				4EB8AFCA24000D40008E53BD /* Gong3.mp3 */,
-				4EB8AFC924000D40008E53BD /* Gong4.mp3 */,
+				4EB8AFC924000D40008E53BD /* Gong3.mp3 */,
+				4E7887F9242B98FA0030B66E /* Slap.mp3 */,
 				4ECBB5A123FDB19A003A2986 /* BachGavotteShort.mp3 */,
 			);
 			path = Sounds;
@@ -270,14 +273,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EB8AFD124000D41008E53BD /* Gong4.mp3 in Resources */,
+				4EB8AFD124000D41008E53BD /* Gong3.mp3 in Resources */,
 				4EB8AFD024000D41008E53BD /* Gong2.mp3 in Resources */,
+				4E7887FA242B98FA0030B66E /* Slap.mp3 in Resources */,
+				4E7887F4242B92700030B66E /* Beep.mp3 in Resources */,
 				4E54C67023EE23EF000E450E /* LaunchScreen.storyboard in Resources */,
 				4EB8AFD524000D41008E53BD /* 440Hz.mp3 in Resources */,
 				4E54C66D23EE23EF000E450E /* Preview Assets.xcassets in Resources */,
 				4ECBB5A223FDB19A003A2986 /* BachGavotteShort.mp3 in Resources */,
 				4EB8AFD624000D41008E53BD /* 1000Hz.mp3 in Resources */,
-				4EB8AFD224000D41008E53BD /* Gong3.mp3 in Resources */,
 				4EB6B712240D5B5C00486E8F /* AvenirNextCondensed-Medium.ttf in Resources */,
 				4E54C66A23EE23EF000E450E /* Assets.xcassets in Resources */,
 				4EB6B713240D5B5C00486E8F /* AvenirNextCondensed-Heavy.ttf in Resources */,

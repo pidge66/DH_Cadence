@@ -30,17 +30,19 @@ struct Cadence : Identifiable {//}, Equatable {
 class ArrayCadences: ObservableObject {
     
     @Published var cadences: [Cadence]
-    static let tones = ["250Hz.mp3", "440Hz.mp3", "1000Hz.mp3", "Gong1.mp3", "Gong2.mp3", "Gong3.mp3", "Gong4.mp3"]
+    static let tones = ["250Hz.mp3", "440Hz.mp3", "1000Hz.mp3", "Beep.mp3", "Slap.mp3", "Gong1.mp3", "Gong2.mp3", "Gong3.mp3"]
     static let tempos = [30.0, 60.0, 120.0, 240.0, 480.0]
 
     init() {
         self.cadences = [
-            Cadence(name: "Cadence 1", repetitions: 1, metronomes: [
-                Metronome(tone: ArrayCadences.tones[1], selectedToneIndex:1, tempo: 60.0, repetitions: 4),
-                Metronome(tone: ArrayCadences.tones[2], selectedToneIndex:2, tempo: 60.0, repetitions: 7),
-                Metronome(tone: ArrayCadences.tones[6], selectedToneIndex:6, tempo: 60.0, repetitions: 8),
-            ]),
-            Cadence(name: "Cadence 2", repetitions: 20, metronomes: [])
+            Cadence(name: "478 Breathing Technique", repetitions: 10, metronomes: [
+                Metronome(tone: ArrayCadences.tones[1], selectedToneIndex:1, tempo: 60.0, repetitions: 3),
+                Metronome(tone: ArrayCadences.tones[4], selectedToneIndex:4, tempo: 60.0, repetitions: 1),
+                Metronome(tone: ArrayCadences.tones[3], selectedToneIndex:3, tempo: 60.0, repetitions: 6),
+                Metronome(tone: ArrayCadences.tones[4], selectedToneIndex:4, tempo: 60.0, repetitions: 1),
+                Metronome(tone: ArrayCadences.tones[7], selectedToneIndex:7, tempo: 60.0, repetitions: 7),
+                Metronome(tone: ArrayCadences.tones[4], selectedToneIndex:4, tempo: 60.0, repetitions: 1)
+            ])
         ]
     }
 }
