@@ -40,6 +40,15 @@
 		4EB8AFD424000D41008E53BD /* Gong1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EB8AFCC24000D40008E53BD /* Gong1.mp3 */; };
 		4EB8AFD524000D41008E53BD /* 440Hz.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EB8AFCD24000D41008E53BD /* 440Hz.mp3 */; };
 		4EB8AFD624000D41008E53BD /* 1000Hz.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EB8AFCE24000D41008E53BD /* 1000Hz.mp3 */; };
+		4EC17A1424E343CD00C3ECE4 /* Beep1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EC17A0B24E343CD00C3ECE4 /* Beep1.mp3 */; };
+		4EC17A1524E343CD00C3ECE4 /* Beep2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EC17A0C24E343CD00C3ECE4 /* Beep2.mp3 */; };
+		4EC17A1624E343CD00C3ECE4 /* Gun3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EC17A0D24E343CD00C3ECE4 /* Gun3.mp3 */; };
+		4EC17A1724E343CD00C3ECE4 /* Beep4.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EC17A0E24E343CD00C3ECE4 /* Beep4.mp3 */; };
+		4EC17A1824E343CD00C3ECE4 /* Beep3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EC17A0F24E343CD00C3ECE4 /* Beep3.mp3 */; };
+		4EC17A1924E343CD00C3ECE4 /* Gun2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EC17A1024E343CD00C3ECE4 /* Gun2.mp3 */; };
+		4EC17A1A24E343CD00C3ECE4 /* Ding.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EC17A1124E343CD00C3ECE4 /* Ding.mp3 */; };
+		4EC17A1B24E343CD00C3ECE4 /* Gun1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EC17A1224E343CD00C3ECE4 /* Gun1.mp3 */; };
+		4EC17A1C24E343CD00C3ECE4 /* AirHorn.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4EC17A1324E343CD00C3ECE4 /* AirHorn.mp3 */; };
 		4ECBB59E23FD8DC4003A2986 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECBB59D23FD8DC4003A2986 /* Player.swift */; };
 		4ECBB5A223FDB19A003A2986 /* BachGavotteShort.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4ECBB5A123FDB19A003A2986 /* BachGavotteShort.mp3 */; };
 		4ECBB5C823FED62D003A2986 /* Counter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECBB5C723FED62D003A2986 /* Counter.swift */; };
@@ -81,6 +90,15 @@
 		4EB8AFCC24000D40008E53BD /* Gong1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Gong1.mp3; sourceTree = "<group>"; };
 		4EB8AFCD24000D41008E53BD /* 440Hz.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 440Hz.mp3; sourceTree = "<group>"; };
 		4EB8AFCE24000D41008E53BD /* 1000Hz.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 1000Hz.mp3; sourceTree = "<group>"; };
+		4EC17A0B24E343CD00C3ECE4 /* Beep1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Beep1.mp3; sourceTree = "<group>"; };
+		4EC17A0C24E343CD00C3ECE4 /* Beep2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Beep2.mp3; sourceTree = "<group>"; };
+		4EC17A0D24E343CD00C3ECE4 /* Gun3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Gun3.mp3; sourceTree = "<group>"; };
+		4EC17A0E24E343CD00C3ECE4 /* Beep4.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Beep4.mp3; sourceTree = "<group>"; };
+		4EC17A0F24E343CD00C3ECE4 /* Beep3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Beep3.mp3; sourceTree = "<group>"; };
+		4EC17A1024E343CD00C3ECE4 /* Gun2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Gun2.mp3; sourceTree = "<group>"; };
+		4EC17A1124E343CD00C3ECE4 /* Ding.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Ding.mp3; sourceTree = "<group>"; };
+		4EC17A1224E343CD00C3ECE4 /* Gun1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Gun1.mp3; sourceTree = "<group>"; };
+		4EC17A1324E343CD00C3ECE4 /* AirHorn.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AirHorn.mp3; sourceTree = "<group>"; };
 		4ECBB59D23FD8DC4003A2986 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		4ECBB5A123FDB19A003A2986 /* BachGavotteShort.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BachGavotteShort.mp3; sourceTree = "<group>"; };
 		4ECBB5C723FED62D003A2986 /* Counter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Counter.swift; sourceTree = "<group>"; };
@@ -199,6 +217,15 @@
 				4ECBB5A123FDB19A003A2986 /* BachGavotteShort.mp3 */,
 				4E95B8BC24D2F11B00B4B444 /* Chime1.mp3 */,
 				4E95B8BE24D2F9AD00B4B444 /* silence.mp3 */,
+				4EC17A1324E343CD00C3ECE4 /* AirHorn.mp3 */,
+				4EC17A0B24E343CD00C3ECE4 /* Beep1.mp3 */,
+				4EC17A0C24E343CD00C3ECE4 /* Beep2.mp3 */,
+				4EC17A0F24E343CD00C3ECE4 /* Beep3.mp3 */,
+				4EC17A0E24E343CD00C3ECE4 /* Beep4.mp3 */,
+				4EC17A1124E343CD00C3ECE4 /* Ding.mp3 */,
+				4EC17A1224E343CD00C3ECE4 /* Gun1.mp3 */,
+				4EC17A1024E343CD00C3ECE4 /* Gun2.mp3 */,
+				4EC17A0D24E343CD00C3ECE4 /* Gun3.mp3 */,
 			);
 			path = Sounds;
 			sourceTree = "<group>";
@@ -282,18 +309,27 @@
 				4E95B8BF24D2F9AD00B4B444 /* silence.mp3 in Resources */,
 				4EB8AFD124000D41008E53BD /* Gong3.mp3 in Resources */,
 				4EB8AFD024000D41008E53BD /* Gong2.mp3 in Resources */,
+				4EC17A1524E343CD00C3ECE4 /* Beep2.mp3 in Resources */,
+				4EC17A1924E343CD00C3ECE4 /* Gun2.mp3 in Resources */,
+				4EC17A1C24E343CD00C3ECE4 /* AirHorn.mp3 in Resources */,
+				4EC17A1B24E343CD00C3ECE4 /* Gun1.mp3 in Resources */,
 				4E7887FA242B98FA0030B66E /* Slap.mp3 in Resources */,
 				4E7887F4242B92700030B66E /* Beep.mp3 in Resources */,
 				4E54C67023EE23EF000E450E /* LaunchScreen.storyboard in Resources */,
+				4EC17A1724E343CD00C3ECE4 /* Beep4.mp3 in Resources */,
 				4EB8AFD524000D41008E53BD /* 440Hz.mp3 in Resources */,
+				4EC17A1424E343CD00C3ECE4 /* Beep1.mp3 in Resources */,
 				4E54C66D23EE23EF000E450E /* Preview Assets.xcassets in Resources */,
 				4ECBB5A223FDB19A003A2986 /* BachGavotteShort.mp3 in Resources */,
 				4EB8AFD624000D41008E53BD /* 1000Hz.mp3 in Resources */,
 				4E95B8BD24D2F11B00B4B444 /* Chime1.mp3 in Resources */,
+				4EC17A1624E343CD00C3ECE4 /* Gun3.mp3 in Resources */,
 				4EB6B712240D5B5C00486E8F /* AvenirNextCondensed-Medium.ttf in Resources */,
 				4E54C66A23EE23EF000E450E /* Assets.xcassets in Resources */,
+				4EC17A1A24E343CD00C3ECE4 /* Ding.mp3 in Resources */,
 				4EB6B713240D5B5C00486E8F /* AvenirNextCondensed-Heavy.ttf in Resources */,
 				4EB6B70F240D5B5C00486E8F /* AvenirNextCondensed-Regular.ttf in Resources */,
+				4EC17A1824E343CD00C3ECE4 /* Beep3.mp3 in Resources */,
 				4EB6B711240D5B5C00486E8F /* AvenirNextCondensed-DemiBold.ttf in Resources */,
 				4EB8AFCF24000D41008E53BD /* 250Hz.mp3 in Resources */,
 				4EB8AFD424000D41008E53BD /* Gong1.mp3 in Resources */,
@@ -470,7 +506,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dh.cadence;
+				PRODUCT_BUNDLE_IDENTIFIER = gov.PennDOT.DHSwiftUI1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -483,7 +519,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"DH_Cadence/Preview Content\"";
-				DEVELOPMENT_TEAM = MWEWX6BF2P;
+				DEVELOPMENT_TEAM = WBVPGS55D7;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = DH_Cadence/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -491,7 +527,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.dh.cadence;
+				PRODUCT_BUNDLE_IDENTIFIER = gov.PennDOT.DHSwiftUI1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

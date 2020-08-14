@@ -30,7 +30,7 @@ struct Cadence : Identifiable {//}, Equatable {
 class ArrayCadences: ObservableObject {
     
     @Published var cadences: [Cadence]
-    static let tones = ["250Hz.mp3", "440Hz.mp3", "1000Hz.mp3", "Beep.mp3", "Slap.mp3", "Gong1.mp3", "Gong2.mp3", "Gong3.mp3", "Chime1.mp3", "silence.mp3"]
+    static let tones = ["250Hz.mp3", "440Hz.mp3", "1000Hz.mp3", "Beep.mp3", "Slap.mp3", "Gong1.mp3", "Gong2.mp3", "Gong3.mp3", "Chime1.mp3", "silence.mp3", "Ding.mp3"]
     static let tempos = [30.0, 60.0, 120.0, 240.0, 480.0]
 
     init() {
@@ -45,13 +45,15 @@ class ArrayCadences: ObservableObject {
             ]),
             Cadence(name: "Dumb Bell Workout", repetitions: 8, metronomes: [
                 Metronome(tone: ArrayCadences.tones[1], selectedToneIndex:1, tempo: 60.0, repetitions: 3),
-                Metronome(tone: ArrayCadences.tones[2], selectedToneIndex:2, tempo: 60.0, repetitions: 1),
+                Metronome(tone: ArrayCadences.tones[10], selectedToneIndex:10, tempo: 60.0, repetitions: 1),
+                Metronome(tone: ArrayCadences.tones[9], selectedToneIndex:9, tempo: 60.0, repetitions: 1),
                 Metronome(tone: ArrayCadences.tones[4], selectedToneIndex:4, tempo: 300.0, repetitions: 7),
                 Metronome(tone: ArrayCadences.tones[8], selectedToneIndex:8, tempo: 300.0, repetitions: 1),
                 Metronome(tone: ArrayCadences.tones[9], selectedToneIndex:9, tempo: 300.0, repetitions: 3),
 
                 Metronome(tone: ArrayCadences.tones[1], selectedToneIndex:1, tempo: 60.0, repetitions: 3),
-                Metronome(tone: ArrayCadences.tones[2], selectedToneIndex:2, tempo: 60.0, repetitions: 1),
+                Metronome(tone: ArrayCadences.tones[10], selectedToneIndex:10, tempo: 60.0, repetitions: 1),
+                Metronome(tone: ArrayCadences.tones[9], selectedToneIndex:9, tempo: 60.0, repetitions: 1),
                 Metronome(tone: ArrayCadences.tones[4], selectedToneIndex:4, tempo: 300.0, repetitions: 7),
                 Metronome(tone: ArrayCadences.tones[8], selectedToneIndex:8, tempo: 300.0, repetitions: 1),
                 Metronome(tone: ArrayCadences.tones[9], selectedToneIndex:9, tempo: 300.0, repetitions: 6)
