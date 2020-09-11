@@ -71,7 +71,7 @@ struct DetailsView: View {
                         HStack {
                             Spacer()
                             Button(action: {
-                                self.cadence.metronomes.append(Metronome(tone: ArrayCadences.tones[1], selectedToneIndex:1, tempo: 60.0, repetitions: 1))
+                                self.cadence.metronomes.append(Metronome(tone: ArrayCadences.tones[1], selectedToneIndex:1, duration: 1.0, repetitions: 1))
                             }, label: {
                                 Image(systemName: "plus.circle")
                                     .font(.system(size: 36))
@@ -100,8 +100,8 @@ struct DetailsView: View {
                         .padding(.trailing, 5)
 
                     HStack {
-                        Text("Tempo:").bold()
-                        Text(String("\(m.tempo.rounded())"))
+                        Text("Duration:").bold()
+                        Text(String("\(m.duration.rounded())"))
                         Spacer()
                     }   .padding(.leading, 5)
                         .padding(.trailing, 5)
@@ -145,10 +145,10 @@ struct DetailsView: View {
                         
                         
                         HStack {
-                            Text("Tempo:").bold()
-                            Text(String("\(self.cadence.metronomes[i].tempo.rounded())"))
-                            Slider(value: self.$cadence.metronomes[i].tempo, in: 30...480, step: 30) {_ in
-                                print("\(self.cadence.metronomes[i].tempo)")
+                            Text("Duration:").bold()
+                            Text(String("\(self.cadence.metronomes[i].duration.rounded())"))
+                            Slider(value: self.$cadence.metronomes[i].duration, in: 0.0...60.0, step: 0.50) {_ in  // ?why stepper reverts to 1?!
+                                print("\(self.cadence.metronomes[i].duration)")
                             }
                             Spacer()
                         }   .padding(.leading, 5)
@@ -197,6 +197,12 @@ struct DetailsView: View {
                 self.player.playCadence(self.cadence)
             }, label: {
                 Text("Run").font(.system(size: 24))
+            })
+            Spacer()
+            Button(action: {
+                self.player.stopCadence()
+            }, label: {
+                Text("Pause").font(.system(size: 24))
             })
             Spacer()
             Button(action: {

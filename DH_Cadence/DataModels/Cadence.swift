@@ -15,7 +15,7 @@ struct Metronome : Identifiable {
     public var id = UUID()
     var tone: String
     var selectedToneIndex: Int
-    var tempo: Double
+    var duration: Double  // in seconds
     var repetitions: Int
 }
 
@@ -56,29 +56,38 @@ class ArrayCadences: ObservableObject {
     init() {
         self.cadences = [
             Cadence(name: "478 Breathing Technique", repetitions: 10, metronomes: [
-                Metronome(tone: ArrayCadences.tones[2], selectedToneIndex:2, tempo: 60.0, repetitions: 3),
-                Metronome(tone: ArrayCadences.tones[5], selectedToneIndex:5, tempo: 60.0, repetitions: 1),
-                Metronome(tone: ArrayCadences.tones[4], selectedToneIndex:4, tempo: 60.0, repetitions: 6),
-                Metronome(tone: ArrayCadences.tones[5], selectedToneIndex:5, tempo: 60.0, repetitions: 1),
-                Metronome(tone: ArrayCadences.tones[8], selectedToneIndex:8, tempo: 60.0, repetitions: 7),
-                Metronome(tone: ArrayCadences.tones[5], selectedToneIndex:5, tempo: 60.0, repetitions: 1)
+                Metronome(tone: ArrayCadences.tones[2], selectedToneIndex:2, duration: 1.0, repetitions: 3),
+                Metronome(tone: ArrayCadences.tones[5], selectedToneIndex:5, duration: 1.0, repetitions: 1),
+                Metronome(tone: ArrayCadences.tones[4], selectedToneIndex:4, duration: 1.0, repetitions: 6),
+                Metronome(tone: ArrayCadences.tones[5], selectedToneIndex:5, duration: 1.0, repetitions: 1),
+                Metronome(tone: ArrayCadences.tones[8], selectedToneIndex:8, duration: 1.0, repetitions: 7),
+                Metronome(tone: ArrayCadences.tones[5], selectedToneIndex:5, duration: 1.0, repetitions: 1)
             ]),
             Cadence(name: "Dumb Bell Workout", repetitions: 8, metronomes: [
-                Metronome(tone: ArrayCadences.tones[2], selectedToneIndex:2, tempo: 60.0, repetitions: 3),
-                Metronome(tone: ArrayCadences.tones[11], selectedToneIndex:11, tempo: 60.0, repetitions: 1),
-                Metronome(tone: ArrayCadences.tones[0], selectedToneIndex:0, tempo: 60.0, repetitions: 1),
-                Metronome(tone: ArrayCadences.tones[5], selectedToneIndex:5, tempo: 300.0, repetitions: 7),
-                Metronome(tone: ArrayCadences.tones[9], selectedToneIndex:9, tempo: 300.0, repetitions: 1),
-                Metronome(tone: ArrayCadences.tones[0], selectedToneIndex:0, tempo: 300.0, repetitions: 3),
+                Metronome(tone: ArrayCadences.tones[2], selectedToneIndex:2, duration: 1.0, repetitions: 3),
+                Metronome(tone: ArrayCadences.tones[11], selectedToneIndex:11, duration: 1.0, repetitions: 1),
+                Metronome(tone: ArrayCadences.tones[0], selectedToneIndex:0, duration: 1.0, repetitions: 1),
+                Metronome(tone: ArrayCadences.tones[5], selectedToneIndex:5, duration: 3.0, repetitions: 9),
+                Metronome(tone: ArrayCadences.tones[9], selectedToneIndex:9, duration: 3.0, repetitions: 1),
+                Metronome(tone: ArrayCadences.tones[0], selectedToneIndex:0, duration: 5.0, repetitions: 3),
 
-                Metronome(tone: ArrayCadences.tones[2], selectedToneIndex:2, tempo: 60.0, repetitions: 3),
-                Metronome(tone: ArrayCadences.tones[11], selectedToneIndex:11, tempo: 60.0, repetitions: 1),
-                Metronome(tone: ArrayCadences.tones[0], selectedToneIndex:0, tempo: 60.0, repetitions: 1),
-                Metronome(tone: ArrayCadences.tones[5], selectedToneIndex:5, tempo: 300.0, repetitions: 7),
-                Metronome(tone: ArrayCadences.tones[9], selectedToneIndex:9, tempo: 300.0, repetitions: 1),
-                Metronome(tone: ArrayCadences.tones[0], selectedToneIndex:0, tempo: 300.0, repetitions: 6),
+                Metronome(tone: ArrayCadences.tones[2], selectedToneIndex:2, duration: 1.0, repetitions: 3),
+                Metronome(tone: ArrayCadences.tones[11], selectedToneIndex:11, duration: 1.0, repetitions: 1),
+                Metronome(tone: ArrayCadences.tones[0], selectedToneIndex:0, duration: 1.0, repetitions: 1),
+                Metronome(tone: ArrayCadences.tones[5], selectedToneIndex:5, duration: 3.0, repetitions: 9),
+                Metronome(tone: ArrayCadences.tones[9], selectedToneIndex:9, duration: 3.0, repetitions: 1),
+                Metronome(tone: ArrayCadences.tones[0], selectedToneIndex:0, duration: 5.0, repetitions: 6),
 
+            ]),
+            Cadence(name: "Ping Pong Session", repetitions: 3, metronomes: [
+                Metronome(tone: ArrayCadences.tones[2], selectedToneIndex:2, duration: 1.0, repetitions: 3),
+                Metronome(tone: ArrayCadences.tones[11], selectedToneIndex:11, duration: 1.0, repetitions: 1),
+                Metronome(tone: ArrayCadences.tones[0], selectedToneIndex:0, duration: 1.0, repetitions: 1),
+                Metronome(tone: ArrayCadences.tones[1], selectedToneIndex:1, duration: 5.0, repetitions: 12),
+                Metronome(tone: ArrayCadences.tones[9], selectedToneIndex:9, duration: 3.0, repetitions: 1),
+                Metronome(tone: ArrayCadences.tones[0], selectedToneIndex:0, duration: 2.0, repetitions: 1),
             ])
+
         ]
     }
 }
