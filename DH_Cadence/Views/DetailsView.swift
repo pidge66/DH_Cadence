@@ -200,7 +200,7 @@ struct DetailsView: View {
             })
             Spacer()
             Button(action: {
-                self.player.stopCadence()
+                self.player.pauseCadence()
             }, label: {
                 Text("Pause").font(.system(size: 24))
             })

@@ -21,6 +21,7 @@ class Player {
     private var currentRepetiion = 0
     private var myTimer: Timer?
     private var active = false
+    private var paused = false
 
 
     init() {
@@ -120,14 +121,15 @@ class Player {
             print("Already active")
             return
         }
-        cadence = myCadence
-        currentIteriation = 0
-        currentMetronomeIndex = 0
-        currentRepetiion = 0
-        myCadence.metronomes.forEach({
-            print("\($0)")
-        })
-
+        if !paused {
+            cadence = myCadence
+            currentIteriation = 0
+            currentMetronomeIndex = 0
+            currentRepetiion = 0
+            myCadence.metronomes.forEach({
+                print("\($0)")
+            })
+        }
         // 1 sec preamble to kick it off before starting the cadence
         myTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(nextBeat), userInfo: nil, repeats: false)
         
@@ -136,6 +138,7 @@ class Player {
     
     func pauseCadence() {
         active = false
+        paused = true
         stopSound()
     }
     
