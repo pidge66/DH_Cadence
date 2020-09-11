@@ -21,6 +21,8 @@ struct DetailsView: View {
     @State private var currentMetronomeIndex = 0
     @State private var pickerVisible = false
     @State private var editMode = false
+    @State private var shouldAnimate = false
+    @State private var percentProgress = Double(0)
     
     var body: some View {
         
@@ -34,6 +36,8 @@ struct DetailsView: View {
                 displayView
                 Spacer()
                 bottomView
+                    .frame(height: 150)
+                
             }
             
         }.navigationBarTitle(Text("\(cadence.name)"))
@@ -190,28 +194,48 @@ struct DetailsView: View {
     }
     
     var bottomView : some View {
-        HStack {
-            Spacer()
-            Button(action: {
-                //self.player.playSound(ArrayCadences.tones[self.selectedToneIndex])
-                self.player.playCadence(self.cadence)
-            }, label: {
-                Text("Run").font(.system(size: 24))
-            })
-            Spacer()
-            Button(action: {
-                self.player.pauseCadence()
-            }, label: {
-                Text("Pause").font(.system(size: 24))
-            })
-            Spacer()
-            Button(action: {
-                self.player.stopCadence()
-            }, label: {
-                Text("Stop").font(.system(size: 24))
-            })
-            Spacer()
-        }.padding(.bottom, 40)
+        VStack {
+            ProgressBar(value: self.percentProgress, maxValue: 100)
+                .frame(height: 10)
+                .padding(.bottom, 10)
+            HStack (spacing: 15) {
+                ActivityIndicator(shouldAnimate: self.$shouldAnimate)
+
+//                ProgressCircle(value: 10,
+//                           maxValue: 100,
+//                           style: .dotted,
+//                           foregroundColor: .red,
+//                           lineWidth: 10)
+//                    .frame(height: 50)
+//                    .padding(-10)
+                
+                Spacer()
+                Button(action: {
+                    self.shouldAnimate = true
+                    self.percentProgress = Double(10)
+                    //self.player.playSound(ArrayCadences.tones[self.selectedToneIndex])
+                    self.player.playCadence(self.cadence)
+                }, label: {
+                    Text("Run").font(.system(size: 24))
+                })
+                Spacer()
+                Button(action: {
+                    self.shouldAnimate = false
+                    self.player.pauseCadence()
+                }, label: {
+                    Text("Pause").font(.system(size: 24))
+                })
+                Spacer()
+                Button(action: {
+                    self.percentProgress = Double(0)
+                    self.shouldAnimate = false
+                    self.player.stopCadence()
+                }, label: {
+                    Text("Stop").font(.system(size: 24))
+                })
+                Spacer()
+            }//.padding(.bottom, 40)
+        }
     }
     
     func delete(at offsets: IndexSet) {
@@ -222,6 +246,133 @@ struct DetailsView: View {
         //        cadence.metronomes.remove(at: index)
     }
     
+}
+
+struct ActivityIndicator: UIViewRepresentable {
+    @Binding var shouldAnimate: Bool
+    func makeUIView(context: Context) -> UIActivityIndicatorView {
+        return UIActivityIndicatorView()
+    }
+
+    func updateUIView(_ uiView: UIActivityIndicatorView,
+                      context: Context) {
+        if self.shouldAnimate {
+            uiView.startAnimating()
+        } else {
+            uiView.stopAnimating()
+        }
+    }
+}
+
+struct ProgressBar: View {
+    private let value: Double
+    private let maxValue: Double
+    private let backgroundEnabled: Bool
+    private let backgroundColor: Color
+    private let foregroundColor: Color
+    
+    init(value: Double,
+         maxValue: Double,
+         backgroundEnabled: Bool = true,
+         backgroundColor: Color = Color(UIColor(red: 245/255,
+                                                green: 245/255,
+                                                blue: 245/255,
+                                                alpha: 1.0)),
+         foregroundColor: Color = Color.black) {
+        self.value = value
+        self.maxValue = maxValue
+        self.backgroundEnabled = backgroundEnabled
+        self.backgroundColor = backgroundColor
+        self.foregroundColor = foregroundColor
+    }
+    var body: some View {
+        // 1
+        ZStack {
+            // 2
+            GeometryReader { geometryReader in
+                // 3
+                if self.backgroundEnabled {
+                    Capsule()
+                        .foregroundColor(self.backgroundColor) // 4
+                }
+                    
+                Capsule()
+                .frame(width: self.progress(value: self.value,
+                                            maxValue: self.maxValue,
+                                            width: geometryReader.size.width))
+                .foregroundColor(self.foregroundColor)
+                .animation(.easeIn)
+            }
+        }
+    }
+    private func progress(value: Double,
+                          maxValue: Double,
+                          width: CGFloat) -> CGFloat {
+        let percentage = value / maxValue
+        return width *  CGFloat(percentage)
+    }
+}
+
+struct ProgressCircle: View {
+    enum Stroke {
+        case line
+        case dotted
+        
+        func strokeStyle(lineWidth: CGFloat) -> StrokeStyle {
+            switch self {
+            case .line:
+                return StrokeStyle(lineWidth: lineWidth,
+                                   lineCap: .round)
+            case .dotted:
+                return StrokeStyle(lineWidth: lineWidth,
+                                   lineCap: .round,
+                                   dash: [12])
+            }
+        }
+    }
+    
+    private let value: Double
+    private let maxValue: Double
+    private let style: Stroke
+    private let backgroundEnabled: Bool
+    private let backgroundColor: Color
+    private let foregroundColor: Color
+    private let lineWidth: CGFloat
+    
+    init(value: Double,
+         maxValue: Double,
+         style: Stroke = .line,
+         backgroundEnabled: Bool = true,
+         backgroundColor: Color = Color(UIColor(red: 245/255,
+                                                green: 245/255,
+                                                blue: 245/255,
+                                                alpha: 1.0)),
+         foregroundColor: Color = Color.black,
+         lineWidth: CGFloat = 10) {
+        self.value = value
+        self.maxValue = maxValue
+        self.style = style
+        self.backgroundEnabled = backgroundEnabled
+        self.backgroundColor = backgroundColor
+        self.foregroundColor = foregroundColor
+        self.lineWidth = lineWidth
+    }
+    var body: some View {
+        ZStack {
+            if self.backgroundEnabled {
+                Circle()
+                    .stroke(lineWidth: self.lineWidth)
+                    .foregroundColor(self.backgroundColor)
+            }
+            
+            Circle()
+                .trim(from: 0, to: CGFloat(self.value / self.maxValue))
+                .stroke(style: self.style.strokeStyle(lineWidth: self.lineWidth))
+                .foregroundColor(self.foregroundColor)
+                .rotationEffect(Angle(degrees: -90))
+                .animation(.easeIn)
+        }
+    }
 }
 
 //struct DetailsView_Previews: PreviewProvider {
