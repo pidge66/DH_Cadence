@@ -22,6 +22,8 @@ class Player {
     private var myTimer: Timer?
     private var active = false
     private var paused = false
+    
+    private var elapsedTime: Double = 0.0
 
 
     init() {
@@ -112,6 +114,8 @@ class Player {
             }
         }
         let tsec = m[currentMetronomeIndex].duration
+        elapsedTime += tsec
+        print("Elapsed Time: \(elapsedTime)")
         myTimer = Timer.scheduledTimer(timeInterval: tsec, target: self, selector: #selector(nextBeat), userInfo: nil, repeats: true)
     }
     
@@ -128,6 +132,7 @@ class Player {
             currentIteriation = 0
             currentMetronomeIndex = 0
             currentRepetiion = 0
+            elapsedTime = 0
             var t: Double
             t = 0
             myCadence.metronomes.forEach({
