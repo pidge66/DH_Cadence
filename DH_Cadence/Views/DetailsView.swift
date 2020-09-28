@@ -16,13 +16,14 @@ struct DetailsView: View {
     
     @Binding var cadence: Cadence
     
-    let player = Player()
+    @ObservedObject var player = Player()
     @State private var selectedToneIndex = 0
     @State private var currentMetronomeIndex = 0
     @State private var pickerVisible = false
     @State private var editMode = false
     @State private var shouldAnimate = false
-    @State private var percentProgress = Double(0)
+    //@State private var percentProgress = Double(0)
+    //TODO: how to pass percentProgress to Player for update??
     
     var body: some View {
         
@@ -195,7 +196,7 @@ struct DetailsView: View {
     
     var bottomView : some View {
         VStack {
-            ProgressBar(value: self.percentProgress, maxValue: 100)
+            ProgressBar(value: self.player.percentComplete, maxValue: 100)
                 .frame(height: 10)
                 .padding(.bottom, 10)
             HStack (spacing: 15) {
@@ -212,7 +213,7 @@ struct DetailsView: View {
                 Spacer()
                 Button(action: {
                     self.shouldAnimate = true
-                    self.percentProgress = Double(10)
+                    //self.percentProgress = Double(10)
                     //self.player.playSound(ArrayCadences.tones[self.selectedToneIndex])
                     self.player.playCadence(self.cadence)
                 }, label: {
@@ -227,7 +228,7 @@ struct DetailsView: View {
                 })
                 Spacer()
                 Button(action: {
-                    self.percentProgress = Double(0)
+                    //self.percentProgress = Double(0)
                     self.shouldAnimate = false
                     self.player.stopCadence()
                 }, label: {

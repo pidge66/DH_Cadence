@@ -8,7 +8,11 @@
 
 import AVFoundation
 
-class Player {
+class Player: ObservableObject {
+    @Published var percentComplete: Double = 0.0
+    private var elapsedTime: Double = 0
+    private var totalTime: Double = 0
+    
     private var sound = AVAudioPlayer()
     //private var cadence: Cadence
     
@@ -23,7 +27,6 @@ class Player {
     private var active = false
     private var paused = false
     
-    private var elapsedTime: Double = 0.0
 
 
     init() {
@@ -109,13 +112,16 @@ class Player {
                 currentMetronomeIndex = 0
                 currentIteriation += 1
                 if currentIteriation >= r {
+                    elapsedTime = totalTime
+                    percentComplete = 100
                     return
                 }
             }
         }
         let tsec = m[currentMetronomeIndex].duration
         elapsedTime += tsec
-        print("Elapsed Time: \(elapsedTime)")
+        percentComplete = elapsedTime / totalTime * 100
+        print("Elapsed Time: \(elapsedTime)      percentComplet: \(percentComplete)")
         myTimer = Timer.scheduledTimer(timeInterval: tsec, target: self, selector: #selector(nextBeat), userInfo: nil, repeats: true)
     }
     
@@ -139,7 +145,8 @@ class Player {
                 t += $0.duration * Double($0.repetitions)
                 print("\($0) = \(t)")
             })
-            print("\(t * Double(myCadence.repetitions))")
+            print("totalTime: \(t * Double(myCadence.repetitions))")
+            self.totalTime = t * Double(myCadence.repetitions)
         }
         // 1 sec preamble to kick it off before starting the cadence
         myTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(nextBeat), userInfo: nil, repeats: false)
