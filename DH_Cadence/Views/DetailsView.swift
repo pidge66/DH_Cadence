@@ -279,7 +279,7 @@ struct ProgressBar: View {
                                                 green: 245/255,
                                                 blue: 245/255,
                                                 alpha: 1.0)),
-         foregroundColor: Color = Color.black) {
+         foregroundColor: Color = Color.baseRed) {
         self.value = value
         self.maxValue = maxValue
         self.backgroundEnabled = backgroundEnabled
