@@ -10,6 +10,7 @@ import AVFoundation
 
 class Player: ObservableObject {
     @Published var percentComplete: Double = 0.0
+    @Published var activityIndicator: Bool = false
     private var elapsedTime: Double = 0
     private var totalTime: Double = 0
     
@@ -114,6 +115,7 @@ class Player: ObservableObject {
                 if currentIteriation >= r {
                     elapsedTime = totalTime
                     percentComplete = 100
+                    activityIndicator = false
                     return
                 }
             }
@@ -121,13 +123,15 @@ class Player: ObservableObject {
         let tsec = m[currentMetronomeIndex].duration
         elapsedTime += tsec
         percentComplete = elapsedTime / totalTime * 100
+        activityIndicator = percentComplete > 0 && percentComplete < 100
         print("Elapsed Time: \(elapsedTime)      percentComplet: \(percentComplete)")
         myTimer = Timer.scheduledTimer(timeInterval: tsec, target: self, selector: #selector(nextBeat), userInfo: nil, repeats: true)
     }
     
     func playCadence(_ myCadence: Cadence) {
         if active {
-            stopCadence()
+            //stopCadence()
+            pauseCadence()
             print("Already active")
             return
         }
@@ -148,8 +152,8 @@ class Player: ObservableObject {
             print("totalTime: \(t * Double(myCadence.repetitions))")
             self.totalTime = t * Double(myCadence.repetitions)
         }
-        // 1 sec preamble to kick it off before starting the cadence
-        myTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(nextBeat), userInfo: nil, repeats: false)
+        // short preamble to kick off the "nextBeat" to start the cadence
+        myTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(nextBeat), userInfo: nil, repeats: false)
         
         active = true
     }
@@ -164,5 +168,7 @@ class Player: ObservableObject {
         active = false
         paused = false
         stopSound()
+        percentComplete = 0
+        activityIndicator = false
     }
 }

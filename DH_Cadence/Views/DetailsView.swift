@@ -21,9 +21,6 @@ struct DetailsView: View {
     @State private var currentMetronomeIndex = 0
     @State private var pickerVisible = false
     @State private var editMode = false
-    @State private var shouldAnimate = false
-    //@State private var percentProgress = Double(0)
-    //TODO: how to pass percentProgress to Player for update??
     
     var body: some View {
         
@@ -200,36 +197,30 @@ struct DetailsView: View {
                 .frame(height: 10)
                 .padding(.bottom, 10)
             HStack (spacing: 15) {
-                ActivityIndicator(shouldAnimate: self.$shouldAnimate)
+                ActivityIndicator(shouldAnimate: self.$player.activityIndicator)
 
-//                ProgressCircle(value: 10,
-//                           maxValue: 100,
-//                           style: .dotted,
-//                           foregroundColor: .red,
-//                           lineWidth: 10)
-//                    .frame(height: 50)
-//                    .padding(-10)
+                ProgressCircle(value: self.player.percentComplete,
+                           maxValue: 100,
+                           style: .line,
+                           foregroundColor: .green,
+                           lineWidth: 10)
+                    .frame(height: 50)
+                    .padding(-10)
                 
                 Spacer()
                 Button(action: {
-                    self.shouldAnimate = true
-                    //self.percentProgress = Double(10)
-                    //self.player.playSound(ArrayCadences.tones[self.selectedToneIndex])
                     self.player.playCadence(self.cadence)
                 }, label: {
                     Text("Run").font(.system(size: 24))
                 })
                 Spacer()
                 Button(action: {
-                    self.shouldAnimate = false
                     self.player.pauseCadence()
                 }, label: {
                     Text("Pause").font(.system(size: 24))
                 })
                 Spacer()
                 Button(action: {
-                    //self.percentProgress = Double(0)
-                    self.shouldAnimate = false
                     self.player.stopCadence()
                 }, label: {
                     Text("Stop").font(.system(size: 24))
