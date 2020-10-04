@@ -21,25 +21,41 @@ struct DetailsView: View {
     @State private var currentMetronomeIndex = 0
     @State private var pickerVisible = false
     @State private var editMode = false
-    
+    @State private var playbackMode = false
+
     var body: some View {
         
         return VStack {
             
-            headingView
-            
             if (editMode) {
+                headingView
                 editView
-            } else {
-                displayView
-                Spacer()
-                bottomView
+            } else if (playbackMode) {
+                ZStack {
+                    ProgressCircle(value: self.player.percentComplete,
+                                   maxValue: 100,
+                                   style: .line,
+                                   foregroundColor: .green,
+                                   lineWidth: 20)
+                        //.frame(height: 50)
+                        .padding(10)
+                    
+                    ActivityIndicator(shouldAnimate: self.$player.activityIndicator)
+                }
+                playbackView
                     .frame(height: 150)
+            } else {
+                headingView
+                displayView
+                bottomView
+                    .padding(10)
                 
             }
             
-        }.navigationBarTitle(Text("\(cadence.name)"))
+        }.navigationBarTitle("\(cadence.name)", displayMode: .inline)
             .padding(.leading, 10).padding(.trailing, 10)
+//      }.navigationBarTitle(Text("\(cadence.name)"))
+//          .padding(.leading, 10).padding(.trailing, 10)
         //            .onDisappear {
         //                self.player.stopSound()
         //        }
@@ -61,7 +77,7 @@ struct DetailsView: View {
                 }
             }
             
-            Divider().padding(.top, 10).padding(.bottom, 20)
+            Divider().padding(.top, 10)//.padding(.bottom, 20)
             
             HStack {
                 Text("Metronomes:").bold()
@@ -117,7 +133,7 @@ struct DetailsView: View {
                         .padding(.trailing, 5)
 
                 }
-                .padding(.top, 10)
+                .padding(.top, 1)
                 .background(Color.baseRockBlue)
                 
             } // ForEach
@@ -193,44 +209,100 @@ struct DetailsView: View {
     
     var bottomView : some View {
         VStack {
+//            ProgressBar(value: self.player.percentComplete, maxValue: 100)
+//                .frame(height: 10)
+//                .padding(.bottom, 10)
+//            HStack (spacing: 15) {
+//                ActivityIndicator(shouldAnimate: self.$player.activityIndicator)
+//
+//                ProgressCircle(value: self.player.percentComplete,
+//                           maxValue: 100,
+//                           style: .line,
+//                           foregroundColor: .green,
+//                           lineWidth: 10)
+//                    .frame(height: 50)
+//                    .padding(-10)
+//
+//                Spacer()
+//                Button(action: {
+//                    self.player.playCadence(self.cadence)
+//                    self.playbackMode = true
+//                }) {
+//                    Image(systemName: "playpause")
+//                        .font(Font.system(.largeTitle).bold())
+//                }
+//                Spacer()
+//                Button(action: {
+//                    self.player.pauseCadence()
+//                }) {
+//                    Image(systemName: "pause")
+//                        .font(Font.system(.largeTitle).bold())
+//
+//                }
+//                Spacer()
+//                Button(action: {
+//                    self.player.stopCadence()
+//                    self.playbackMode = false
+//                }) {
+//                    //Image("icons8-stop")
+//                    Image(systemName: "stop")
+//                        .font(Font.system(.largeTitle).bold())                }
+//                Spacer()
+                
+                Button(action: {
+                    self.player.playCadence(self.cadence)
+                    self.playbackMode = true
+                }) {
+                    Image(systemName: "play")
+                        .font(Font.system(.largeTitle).bold())
+                }
+//            }//.padding(.bottom, 40)
+        }
+    }
+    
+    var playbackView : some View {
+        VStack {
             ProgressBar(value: self.player.percentComplete, maxValue: 100)
                 .frame(height: 10)
                 .padding(.bottom, 10)
             HStack (spacing: 15) {
-                ActivityIndicator(shouldAnimate: self.$player.activityIndicator)
 
-                ProgressCircle(value: self.player.percentComplete,
-                           maxValue: 100,
-                           style: .line,
-                           foregroundColor: .green,
-                           lineWidth: 10)
-                    .frame(height: 50)
-                    .padding(-10)
-                
+//                ProgressCircle(value: self.player.percentComplete,
+//                           maxValue: 100,
+//                           style: .line,
+//                           foregroundColor: .green,
+//                           lineWidth: 10)
+//                    .frame(height: 50)
+//                    .padding(-10)
+//
                 Spacer()
                 Button(action: {
                     self.player.playCadence(self.cadence)
                 }) {
                     Image(systemName: "playpause")
+                        .font(Font.system(.largeTitle).bold())
                 }
                 Spacer()
                 Button(action: {
                     self.player.pauseCadence()
                 }) {
                     Image(systemName: "pause")
+                        .font(Font.system(.largeTitle).bold())
+                    
                 }
                 Spacer()
                 Button(action: {
                     self.player.stopCadence()
+                    self.playbackMode = false
                 }) {
-                    Image(systemName: "stop")
                     //Image("icons8-stop")
-                }
+                    Image(systemName: "stop")
+                        .font(Font.system(.largeTitle).bold())                }
                 Spacer()
             }//.padding(.bottom, 40)
         }
     }
-    
+
     func delete(at offsets: IndexSet) {
         // *** if bindings are involved within each row view, this will cause out of range error
         cadence.metronomes.remove(atOffsets: offsets)
