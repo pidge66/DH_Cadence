@@ -210,21 +210,22 @@ struct DetailsView: View {
                 Spacer()
                 Button(action: {
                     self.player.playCadence(self.cadence)
-                }, label: {
-                    Text("Run").font(.system(size: 24))
-                })
+                }) {
+                    Image(systemName: "playpause")
+                }
                 Spacer()
                 Button(action: {
                     self.player.pauseCadence()
-                }, label: {
-                    Text("Pause").font(.system(size: 24))
-                })
+                }) {
+                    Image(systemName: "pause")
+                }
                 Spacer()
                 Button(action: {
                     self.player.stopCadence()
-                }, label: {
-                    Text("Stop").font(.system(size: 24))
-                })
+                }) {
+                    Image(systemName: "stop")
+                    //Image("icons8-stop")
+                }
                 Spacer()
             }//.padding(.bottom, 40)
         }
